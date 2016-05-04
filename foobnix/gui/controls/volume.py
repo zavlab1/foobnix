@@ -80,7 +80,7 @@ class VolumeControls(LoadSave, Gtk.Box, FControl):
         percent = widget.get_value()
         self.controls.player_volume(percent)
         FC().volume = percent
-        self.controls.trayicon.popup_volume_contol.avc.set_volume(percent)
+        self.controls.trayicon.popup_volume_control.avc.set_volume(percent)
 
     def on_save(self):
         pass

@@ -3,6 +3,7 @@ Created on Nov 4, 2010
 
 @author: ivan
 '''
+import os
 import urllib
 from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from gi.repository import Gtk
@@ -27,20 +28,14 @@ def resize_pixbuf(pixbuf, size):
 def create_pixbuf_from_path(path, size):
     if not path:
         return None
-    try:
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(path) #@UndefinedVariable
-    except Exception, e:
-        logging.error(e)
-        return None
-
+    if not os.path.isfile(path):
+        path = get_foobnix_resourse_path_by_name(path)
     if size:
-        return resize_pixbuf(pixbuf, size)
+        return GdkPixbuf.Pixbuf.new_from_file_at_size(path, size, size)
     else:
-        return pixbuf
+        return GdkPixbuf.Pixbuf.new_from_file(path) #@UndefinedVariable
 
-def create_pixbuf_from_resource(name, size=None):
-    path = get_foobnix_resourse_path_by_name(name)
-    return create_pixbuf_from_path(path, size)
+
 
 def create_origin_pixbuf_from_url(url):
     f = urllib.urlopen(url)

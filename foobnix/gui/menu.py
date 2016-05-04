@@ -13,6 +13,7 @@ from foobnix.gui.model.signal import FControl
 from foobnix.gui.about.about import AboutWindow
 from foobnix.helpers.my_widgets import open_link_in_browser
 from foobnix.util import const
+from foobnix.util.image_util import icon_exists
 from foobnix.util.widget_utils import MenuStyleDecorator
 
 
@@ -49,10 +50,13 @@ class MenuBarWidget(FControl):
         self.view_cover_lyrics.connect("activate", lambda w: controls.layout.set_visible_coverlyrics_panel(w.get_active()))
 
         separator1 = view.separator() #@UnusedVariable
-        view.add_image_item(_("Equalizer"), "view-media-equalizer", self.controls.eq.show)
+        equalizer_icon = "view-media-equalizer" if icon_exists("view-media-equalizer") else "format-justify-right"
+        view.add_image_item(_("Equalizer"), equalizer_icon, self.controls.eq.show)
         view.add_image_item(_("Download Manager"), "go-down", self.controls.dm.show)
         separator2 = view.separator()
-        preferences_item = view.add_image_item(_("Preferences"), "preferences-system", self.controls.show_preferences)
+
+        pref_icon = "format-justify-fill" if icon_exists("gtk-preferences") else "format-justify-fill"
+        preferences_item = view.add_image_item(_("Preferences"), pref_icon, self.controls.show_preferences)
 
         """if new style menu - remove preferences from View"""
         if not isinstance(parent, TopMenuBar):
@@ -117,7 +121,8 @@ class MenuBarWidget(FControl):
         help.add_image_item(_("Project page"), "applications-internet", lambda * a:open_link_in_browser(_("http://www.foobnix.com/news/eng")))
         help.add_image_item(_("Issue report"), "dialog-warning", lambda * a:open_link_in_browser("http://code.google.com/p/foobnix/issues/list"))
         help.separator()
-        help.add_image_item(_("Donate Participate"), "help-donate", lambda * a:open_link_in_browser(_("http://www.foobnix.com/donate/eng")))
+        donate_icon = "help-donate" if icon_exists("help-donate") else "face-wink"
+        help.add_image_item(_("Donate Participate"), donate_icon, lambda * a:open_link_in_browser(_("http://www.foobnix.com/donate/eng")))
 
         #help.add_image_item("Help", "help-contents")
 

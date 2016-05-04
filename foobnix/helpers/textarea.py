@@ -26,6 +26,8 @@ class TextArea(Gtk.ScrolledWindow):
         text = Gtk.TextView(buffer=self.buffer)
         text.set_wrap_mode(Gtk.WrapMode.WORD)
         text.set_editable(False)
+        text.set_left_margin(7)
+        text.set_right_margin(7)
 
         self.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.add(text)
@@ -39,7 +41,7 @@ class TextArea(Gtk.ScrolledWindow):
             return None
         enditer = self.buffer.get_end_iter()
         image = ImageBase(None)
-        image.set_image_from_url(url)
+        image.set_image(url)
         self.buffer.insert_pixbuf(enditer, image.get_pixbuf())
 
     @idle_task

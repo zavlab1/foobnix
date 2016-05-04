@@ -259,7 +259,7 @@ class InfoPanelWidget(Gtk.Frame, LoadSave, FControl):
             logging.warning("""""Can't get cover image. Check the correctness of the artist's name and track title""""")
 
         if bean.UUID == self.bean.UUID:
-            self.image.update_info_from(bean)
+            self.image.update_image_from(bean)
             self.controls.trayicon.update_info_from(bean)
             self.controls.coverlyrics.set_cover()
 

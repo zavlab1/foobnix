@@ -80,12 +80,12 @@ class OrderShuffleControls_ZAVLAB(FControl, Gtk.Box, LoadSave):
     def __init__(self, controls):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
 
-        self.order = ToggleImageButton("edit-redo", size=Gtk.IconSize.BUTTON)
+        self.order = ToggleImageButton("media-playlist-shuffle", size=Gtk.IconSize.BUTTON)
         self.order.connect("button-press-event", self.on_order)
 
         self.pack_start(self.order, False, False, 0)
 
-        self.repeat = ToggleImageButton("view-refresh", size=Gtk.IconSize.BUTTON)
+        self.repeat = ToggleImageButton("media-playlist-repeat", size=Gtk.IconSize.BUTTON)
         self.repeat.connect("button-press-event", self.choise)
 
         try:

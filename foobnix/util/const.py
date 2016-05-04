@@ -51,13 +51,13 @@ DOWNLOAD_STATUS_INACTIVE = _("Inactive")
 DOWNLOAD_STATUS_LOCK = _("Lock")
 DOWNLOAD_STATUS_ERROR = _("Error")
 
-ICON_FOOBNIX = "images/foobnix.png"
+ICON_FOOBNIX = "images/hicolor/scalable/apps/foobnix.svg"
 
-ICON_FOOBNIX_PLAY = "images/foobnix-play.png"
-ICON_FOOBNIX_PAUSE = "images/foobnix-pause.png"
-ICON_FOOBNIX_STOP = "images/foobnix-stop.png"
-ICON_FOOBNIX_RADIO = "images/foobnix-radio.jpg"
-ICON_BLANK_DISK = "images/foobnix-blank-disc.jpg"
+ICON_FOOBNIX_PLAY = "images/hicolor/scalable/actions/foobnix-play.svg"
+ICON_FOOBNIX_PAUSE = "images/hicolor/scalable/actions/foobnix-pause.svg"
+ICON_FOOBNIX_STOP = "images/hicolor/scalable/actions/foobnix-stop.svg"
+ICON_FOOBNIX_RADIO = "images/hicolor/scalable/actions/foobnix-radio.svg"
+ICON_BLANK_DISK = "images/hicolor/scalable/actions/foobnix-blank-disc.svg"
 
 BEFORE = Gtk.TreeViewDropPosition.BEFORE
 AFTER = Gtk.TreeViewDropPosition.AFTER

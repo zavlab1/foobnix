@@ -148,16 +148,16 @@ class BaseFoobnixControls():
             return None
 
         if state == STATE_STOP:
-            self.trayicon.set_image_from_path(FC().stop_icon_entry)
+            self.trayicon.set_from_file(FC().stop_icon_entry)
         elif state == STATE_PAUSE:
-            self.trayicon.set_image_from_path(FC().pause_icon_entry)
+            self.trayicon.set_from_file(FC().pause_icon_entry)
         elif state == STATE_PLAY:
-            self.trayicon.set_image_from_path(FC().play_icon_entry)
+            self.trayicon.set_from_file(FC().play_icon_entry)
 
         if bean and bean.type:
             logging.debug("bean state and type %s %s" % (state, bean.type))
             if bean.type == FTYPE_RADIO:
-                return self.trayicon.set_image_from_path(FC().radio_icon_entry)
+                return self.trayicon.set_from_file(FC().radio_icon_entry)
 
     @idle_task
     def set_dbus_state(self, state, bean):

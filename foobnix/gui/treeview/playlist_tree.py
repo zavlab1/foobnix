@@ -268,7 +268,7 @@ class PlaylistTreeControl(CommonTreeControl):
 
                 if local_paths:
                     self.tree_menu.add_item(_('Edit Tags'), "accessories-text-editor", edit_tags, (self.controls, local_paths))
-                    self.tree_menu.add_item(_('Format Converter'), "convertimages", convert_files, local_paths)
+                    self.tree_menu.add_item(_('Format Converter'), "emblem-synchronizing", convert_files, local_paths)
                 text = self.get_selected_bean().text
                 self.tree_menu.add_item(_('Copy To Search Line'), "system-search",
                                         self.controls.searchPanel.set_search_text, text)

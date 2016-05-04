@@ -95,13 +95,13 @@ class TrayIconConfig(ConfigPlugin):
     def on_static_icon(self):
         if FC().static_tray_icon:
             FC().static_icon_entry = self.static_icon.get_active_path()
-            self.controls.trayicon.set_from_resource(FC().static_icon_entry)
+            self.controls.trayicon.set_from_file(FC().static_icon_entry)
 
     def check_active_dynamic_icon(self, icon_object):
         icon_name = icon_object.entry.get_text()
         try:
             path = get_foobnix_resourse_path_by_name(icon_name)
-            self.controls.trayicon.set_image_from_path(path)
+            self.controls.trayicon.set_from_file(path)
         except TypeError:
             pass
 

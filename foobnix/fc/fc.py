@@ -45,8 +45,8 @@ class FC():
         self.eq_presets_default = "CUSTOM"
 
         """VK"""
-        self.access_token =  None
-        self.user_id =  None
+        self.access_token = None
+        self.user_id = None
         self.enable_vk_autocomlete = False
 
         """LastFM"""

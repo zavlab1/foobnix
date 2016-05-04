@@ -148,7 +148,7 @@ class NetworkConfig(ConfigPlugin):
         self.result.set_text(_("Result:") + _(" OK in seconds: ") + str(seconds))
 
     def on_enable_http_proxy(self, *a):
-        if  self.enable_proxy.get_active():
+        if self.enable_proxy.get_active():
             self.frame.set_sensitive(True)
         else:
             self.frame.set_sensitive(False)
@@ -198,7 +198,7 @@ class NetworkConfig(ConfigPlugin):
         if proxy_url:
             if not ":" in proxy_url:
                 logging.error("No port specified")
-                proxy_url = proxy_url + ":3128"
+                proxy_url += ":3128"
             FC().proxy_url = proxy_url.strip()
         else:
             FC().proxy_url = None

@@ -41,9 +41,8 @@ class CoverLyricsPanel(Gtk.Frame):
         self.show_all()
 
     def get_pixbuf(self):
-        return self.controls.perspectives.get_perspective('info').get_widget().image.pixbuf
+        return self.controls.perspectives.get_perspective('info').get_widget().image.get_pixbuf()
 
     def set_cover(self):
         self.image.size = FC().info_panel_image_size
         self.image.set_from_pixbuf(self.get_pixbuf())
-

@@ -13,6 +13,7 @@ from foobnix.gui.menu import MenuBarWidget
 from foobnix.helpers.my_widgets import ImageButton
 from foobnix.helpers.menu import Popup
 from foobnix.fc.fc import FC
+from foobnix.util.image_util import icon_exists
 from foobnix.util.widget_utils import MenuStyleDecorator
 
 class TopWidgets(FControl, LoadSave, Gtk.Box):
@@ -24,7 +25,7 @@ class TopWidgets(FControl, LoadSave, Gtk.Box):
 
         self.pack_start(self.old_menu.widget, False, False, 0)
 
-        self.new_menu_button = ImageButton("preferences-system", tooltip_text=_("Settings"))
+        self.new_menu_button = ImageButton("preferences-other", tooltip_text=_("Settings"))
         self.new_menu_button.connect("button-press-event", self.on_button_press)
 
         self.pack_start(self.new_menu_button, False, False, 0)
@@ -40,7 +41,9 @@ class TopWidgets(FControl, LoadSave, Gtk.Box):
         decorator = MenuStyleDecorator()
         MenuBarWidget(self.controls, menu)
         menu.add_separator()
-        menu.add_item(_("Preferences"), "preferences-system", self.controls.show_preferences)
+
+        pref_icon = "gtk-preferences" if icon_exists("gtk-preferences") else "preferences-system"
+        menu.add_item(_("Preferences"), pref_icon, self.controls.show_preferences)
         menu.add_separator()
         menu.add_item(_("Quit"), "application-exit", self.controls.quit)
 

@@ -6,6 +6,7 @@ Created on 29 сент. 2010
 '''
 
 import logging
+from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 from gi.repository import Gdk
 from gi.repository import Gtk
@@ -85,15 +86,16 @@ class PopupVolumeWindow(PopupTrayWindow):
         self.show_all()
         self.hide()
 
-class TrayIconControls(Gtk.StatusIcon, ImageBase, FControl, LoadSave):
+class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
     def __init__(self, controls):
         FControl.__init__(self, controls)
         Gtk.StatusIcon.__init__(self)
         self.hide()
-        ImageBase.__init__(self, ICON_FOOBNIX, 150)
+
+        self.image = ImageBase(ICON_FOOBNIX, 32)
 
         self.popup_menu = PopupMenuWindow(self.controls)
-        self.popup_volume_contol = PopupVolumeWindow(self.controls, self.popup_menu)
+        self.popup_volume_control = PopupVolumeWindow(self.controls, self.popup_menu)
 
         self.connect("activate", self.on_activate)
         self.connect("popup-menu", self.on_popup_menu)
@@ -112,35 +114,40 @@ class TrayIconControls(Gtk.StatusIcon, ImageBase, FControl, LoadSave):
 
         self._previous_notify = None
 
+    @idle_task
+    def set_from_file(self, path):
+        self.image.set_image(path)
+        self.set_from_pixbuf(self.image.get_pixbuf())
+
     def on_save(self):
         pass
 
     def on_scroll(self, button, event):
         self.controls.volume.on_scroll_event(button, event)
-        self.popup_volume_contol.show()
+        self.popup_volume_control.show()
 
     def on_load(self):
         if FC().show_tray_icon:
-            self.set_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+            print self.image.get_pixbuf()
+            self.set_from_pixbuf(self.image.get_pixbuf())
             self.show()
 
     def update_info_from(self, bean):
         self.current_bean = bean
         if bean.artist:
             artist = bean.artist
-            self.tooltip_image.size = 150
+            self.tooltip_image.set_size(150)
         else:
             artist = 'Unknown artist'
-            self.tooltip_image.size = 75
-            self.tooltip_image.resource = ICON_FOOBNIX
-        self.tooltip_image.update_info_from(bean)
+            self.tooltip_image = ImageBase(ICON_FOOBNIX, 75)
+        self.tooltip_image.update_image_from(bean)
 
         if bean.title:
             title = bean.title
         else:
             title = bean.text
         if FC().change_tray_icon:
-            super(TrayIconControls, self).update_info_from(bean)
+            self.image.update_image_from(bean)
 
         if FC().notifier:
             self.to_notify(artist, title)

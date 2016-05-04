@@ -14,7 +14,7 @@ from foobnix.fc.fc import FC
 from foobnix.helpers.dialog_entry import file_chooser_dialog
 from foobnix.helpers.my_widgets import ButtonIconText
 from foobnix.helpers.window import ChildTopWindow
-from foobnix.util.pix_buffer import create_pixbuf_from_resource
+from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 
 class IconBlock(Gtk.Box):
@@ -178,11 +178,13 @@ class ModelConstructor():
             self.apeend_icon(None, icon_name)
 
     def apeend_icon(self, calling_object, icon_name, active=False):
-        pixbuf = create_pixbuf_from_resource(icon_name, self.ICON_SIZE)
-        if pixbuf:
+        try:
+            pixbuf = create_pixbuf_from_path(icon_name, self.ICON_SIZE)
             self.model.append([pixbuf, icon_name])
             if active:
                 calling_object.combobox.set_active(len(self.model) - 1)
+        except Exception as e:
+            logging.error(e)
 
     def delete_icon(self, iter):
         self.model.remove(iter)

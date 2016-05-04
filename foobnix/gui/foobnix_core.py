@@ -1,6 +1,10 @@
 #-*- coding: utf-8 -*-
 
 import logging
+import os
+from gi.repository import Gtk
+
+import sys
 
 from foobnix.fc.fc import FC
 from foobnix.gui.notetab import NoteTabControl
@@ -41,6 +45,8 @@ class FoobnixCore(BaseFoobnixControls):
     def __init__(self, with_dbus=True):
         BaseFoobnixControls.__init__(self)
         self.layout = None
+
+        self.init_icons()
 
         self.net_wrapper = NetWrapper(self, FC().net_ping)
 
@@ -109,3 +115,11 @@ class FoobnixCore(BaseFoobnixControls):
         if FC().hide_on_start:
             self.main_window.hide()
 
+    def init_icons(self):
+        dir = os.path.join("foobnix", "share", "images")
+        local_dir = os.path.join(sys.path[0], dir)
+        if os.path.exists(local_dir):
+            Gtk.IconTheme.get_default().append_search_path(local_dir)
+        else:
+            system_dir = os.path.abspath(os.path.join(os.sep, "usr", "share", "foobnix", "share", "images"))
+            Gtk.IconTheme.get_default().append_search_path(system_dir)
