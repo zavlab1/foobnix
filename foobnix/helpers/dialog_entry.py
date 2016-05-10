@@ -200,7 +200,7 @@ def info_dialog_with_link_and_donate(version):
         vbox.pack_start(link, True, True)
         frame.add(vbox)
 
-        image = ImageBase("images/foobnix-slogan.jpg")
+        image = Gtk.Image.new_from_icon_name("foobnix-slogan")
 
         dialog.vbox.pack_start(image, True, True)
         dialog.vbox.pack_start(frame, True, True)

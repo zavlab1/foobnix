@@ -57,7 +57,15 @@ ICON_FOOBNIX_PLAY = "images/hicolor/scalable/actions/foobnix-play.svg"
 ICON_FOOBNIX_PAUSE = "images/hicolor/scalable/actions/foobnix-pause.svg"
 ICON_FOOBNIX_STOP = "images/hicolor/scalable/actions/foobnix-stop.svg"
 ICON_FOOBNIX_RADIO = "images/hicolor/scalable/actions/foobnix-radio.svg"
-ICON_BLANK_DISK = "images/hicolor/scalable/actions/foobnix-blank-disc.svg"
+ICON_BLANK_DISK = "images/foobnix-blank-disc.jpg"
+
+ICON_FOOBNIX_PATH = "images/hicolor/scalable/apps/foobnix.svg"
+
+ICON_FOOBNIX_PLAY_PATH = "images/hicolor/scalable/actions/foobnix-play.svg"
+ICON_FOOBNIX_PAUSE_PATH = "images/hicolor/scalable/actions/foobnix-pause.svg"
+ICON_FOOBNIX_STOP_PATH = "images/hicolor/scalable/actions/foobnix-stop.svg"
+ICON_FOOBNIX_RADIO_PATH = "images/hicolor/scalable/actions/foobnix-radio.svg"
+ICON_BLANK_DISK_PATH = "images/foobnix-blank-disc.jpg"
 
 BEFORE = Gtk.TreeViewDropPosition.BEFORE
 AFTER = Gtk.TreeViewDropPosition.AFTER

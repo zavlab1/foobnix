@@ -2,41 +2,41 @@
 
 import logging
 import os
-from gi.repository import Gtk
-
 import sys
 
+from gi.repository import Gtk
+
+from foobnix.dm.dm import DM
+from foobnix.eq.eq_controller import EqController
 from foobnix.fc.fc import FC
-from foobnix.gui.notetab import NoteTabControl
 from foobnix.gui.base_layout import BaseFoobnixLayout
 from foobnix.gui.base_controls import BaseFoobnixControls
+from foobnix.gui.controls.playback import PlaybackControls, \
+                                          OrderShuffleControls
+from foobnix.gui.controls.record import RadioRecord
+from foobnix.gui.controls.search_progress import SearchProgress
+from foobnix.gui.controls.seekbar import SeekProgressBarControls
+from foobnix.gui.controls.status_bar import StatusbarControls
+from foobnix.gui.controls.tray_icon import TrayIconControls
+from foobnix.gui.controls.volume import VolumeControls
+from foobnix.gui.coverlyrics import CoverLyricsPanel
+from foobnix.gui.engine.gstreamer import GStreamerEngine
+from foobnix.gui.notetab import NoteTabControl
+from foobnix.gui.perspectives.controller import Controller
 from foobnix.gui.perspectives.fsperspective import FSPerspective
 from foobnix.gui.perspectives.info import InfoPerspective
 from foobnix.gui.perspectives.lastfm import LastFMPerspective
 from foobnix.gui.perspectives.radio import RadioPerspective
 from foobnix.gui.perspectives.storage import StoragePerspective
 from foobnix.gui.perspectives.vk import VKPerspective
-from foobnix.gui.window import MainWindow
-from foobnix.gui.controls.playback import PlaybackControls, \
-    OrderShuffleControls
 from foobnix.gui.search import SearchControls
-from foobnix.gui.controls.search_progress import SearchProgress
-from foobnix.gui.engine.gstreamer import GStreamerEngine
-from foobnix.gui.controls.seekbar import SeekProgressBarControls
-from foobnix.gui.controls.volume import VolumeControls
-from foobnix.gui.controls.status_bar import StatusbarControls
-from foobnix.gui.controls.tray_icon import TrayIconControls
-from foobnix.preferences.preferences_window import PreferencesWindow
-from foobnix.gui.top import TopWidgets
-from foobnix.eq.eq_controller import EqController
-from foobnix.dm.dm import DM
-from foobnix.util.single_thread import SingleThread
-from foobnix.gui.perspectives.controller import Controller
-from foobnix.util.localization import foobnix_localization
 from foobnix.gui.service.lastfm_service import LastFmService
-from foobnix.gui.controls.record import RadioRecord
-from foobnix.gui.coverlyrics import CoverLyricsPanel
+from foobnix.gui.top import TopWidgets
+from foobnix.gui.window import MainWindow
+from foobnix.preferences.preferences_window import PreferencesWindow
+from foobnix.util.localization import foobnix_localization
 from foobnix.util.net_wrapper import NetWrapper
+from foobnix.util.single_thread import SingleThread
 
 
 foobnix_localization()
@@ -116,10 +116,11 @@ class FoobnixCore(BaseFoobnixControls):
             self.main_window.hide()
 
     def init_icons(self):
-        dir = os.path.join("foobnix", "share", "images")
+        dir = os.path.join("share", "foobnix", "images")
         local_dir = os.path.join(sys.path[0], dir)
+
         if os.path.exists(local_dir):
             Gtk.IconTheme.get_default().append_search_path(local_dir)
         else:
-            system_dir = os.path.abspath(os.path.join(os.sep, "usr", "share", "foobnix", "share", "images"))
+            system_dir = os.path.abspath(os.path.join(os.sep, "usr", "share", "foobnix", "images"))
             Gtk.IconTheme.get_default().append_search_path(system_dir)

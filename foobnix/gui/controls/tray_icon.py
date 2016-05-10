@@ -92,8 +92,6 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
         Gtk.StatusIcon.__init__(self)
         self.hide()
 
-        self.image = ImageBase(ICON_FOOBNIX, 32)
-
         self.popup_menu = PopupMenuWindow(self.controls)
         self.popup_volume_control = PopupVolumeWindow(self.controls, self.popup_menu)
 
@@ -116,8 +114,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     @idle_task
     def set_from_file(self, path):
-        self.image.set_image(path)
-        self.set_from_pixbuf(self.image.get_pixbuf())
+        super(TrayIconControls, self).set_from_file()
 
     def on_save(self):
         pass
@@ -128,8 +125,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     def on_load(self):
         if FC().show_tray_icon:
-            print self.image.get_pixbuf()
-            self.set_from_pixbuf(self.image.get_pixbuf())
+            self.set_from_icon_name("foobnix-pause")
             self.show()
 
     def update_info_from(self, bean):
@@ -146,8 +142,8 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
             title = bean.title
         else:
             title = bean.text
-        if FC().change_tray_icon:
-            self.image.update_image_from(bean)
+        if FC().change_tray_icon and bean.image:
+            self.set_from_file(bean.image)
 
         if FC().notifier:
             self.to_notify(artist, title)

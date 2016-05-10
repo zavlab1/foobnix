@@ -13,12 +13,14 @@ from foobnix.fc.fc_cache import FCache
 from foobnix.util.singleton import Singleton
 from foobnix.util.agent import get_ranmom_agent
 from foobnix.fc.fc_helper import FCStates, CONFIG_DIR
-from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_PLAY, \
-    ICON_FOOBNIX_PAUSE, ICON_FOOBNIX_STOP, ICON_FOOBNIX_RADIO
+from foobnix.util.const import ICON_FOOBNIX_PATH      ,\
+                               ICON_FOOBNIX_PLAY_PATH ,\
+                               ICON_FOOBNIX_PAUSE_PATH,\
+                               ICON_FOOBNIX_STOP_PATH ,\
+                               ICON_FOOBNIX_RADIO_PATH
 
 
 CONFIG_FILE = os.path.join(CONFIG_DIR , "foobnix.pkl")
-#CONFIG_FILE = os.path.join(CONFIG_DIR , "foobnix_winter.pkl")
 
 """Foobnix player configuration"""
 class FC():
@@ -82,7 +84,9 @@ class FC():
         self.hpaned_left = -1
         self.hpaned_right = 800
         self.hpaned_right_right_side_width = 174 #self.main_window_size[3] - self.hpaned_right
-        self.background_image_themes = ["theme/cat.jpg", "theme/flower.jpg", "theme/winter.jpg"]
+        self.background_image_themes = ["theme/cat.jpg",
+                                        "theme/flower.jpg",
+                                        "theme/winter.jpg"]
         self.background_image = None # "theme/winter.jpg"
         self.window_opacity = 1
 
@@ -95,8 +99,14 @@ class FC():
         self.on_close_window = const.ON_CLOSE_CLOSE
 
         """support file formats"""
-        audio_containers = [".cue", ".iso.wv", ".m3u", ".m3u8"]
-        self.audio_formats = [".mp3", ".ogg", ".ape", ".flac", ".wma", ".mpc", ".aiff", ".raw", ".au", ".aac", ".ac3", ".m4a", ".ra", ".m4p", ".wv", ".shn", ".wav"]
+        audio_containers   = [".cue", ".iso.wv", ".m3u", ".m3u8"]
+        self.audio_formats = [
+                               ".mp3",  ".ogg",  ".ape", ".flac",
+                               ".wma",  ".mpc",  ".raw", ".aiff",
+                                ".au",  ".aac",  ".ac3",  ".m4a",
+                                ".ra",  ".m4p",  ".wav",  ".shn",
+                                ".wv"
+                              ]
         self.all_support_formats = self.audio_formats + audio_containers
         self.all_support_formats.sort()
 
@@ -110,14 +120,19 @@ class FC():
         self.system_icons_dinamic = False
         self.change_tray_icon = False
 
-        self.all_icons = [ICON_FOOBNIX, ICON_FOOBNIX_PLAY, ICON_FOOBNIX_PAUSE, ICON_FOOBNIX_STOP, ICON_FOOBNIX_RADIO, "images/foobnix-tux.gif"]
+        self.all_icons = [ICON_FOOBNIX_PATH,
+                          ICON_FOOBNIX_PLAY_PATH,
+                          ICON_FOOBNIX_PAUSE_PATH,
+                          ICON_FOOBNIX_STOP_PATH,
+                          ICON_FOOBNIX_RADIO_PATH,
+                          "images/foobnix-tux.gif"]
 
-        self.static_icon_entry = ICON_FOOBNIX
+        self.static_icon_entry = ICON_FOOBNIX_PATH
 
-        self.play_icon_entry = ICON_FOOBNIX_PLAY
-        self.pause_icon_entry = ICON_FOOBNIX_PAUSE
-        self.stop_icon_entry = ICON_FOOBNIX_STOP
-        self.radio_icon_entry = ICON_FOOBNIX_RADIO
+        self.play_icon_entry = ICON_FOOBNIX_PLAY_PATH
+        self.pause_icon_entry = ICON_FOOBNIX_PAUSE_PATH
+        self.stop_icon_entry = ICON_FOOBNIX_STOP_PATH
+        self.radio_icon_entry = ICON_FOOBNIX_RADIO_PATH
 
         """Notification"""
         self.notifier = True
@@ -147,9 +162,27 @@ class FC():
         self.proxy_password = None
 
         '''Multimedia and hot keys'''
-        self.action_hotkey = {'play_pause': '<SUPER>z', 'state_stop': '<SUPER>x', 'volume_up': '<SUPER>Up', 'volume_down': '<SUPER>Down', 'show_hide': '<SUPER>a', 'prev': '<SUPER>Left', 'next': '<SUPER>Right', 'download' : '<Control><SUPER>z'}
-        self.multimedia_keys = {'prev': 'XF86AudioPrev', 'next': 'XF86AudioNext', 'play_pause': 'XF86AudioPlay', 'state_stop': 'XF86AudioStop', 'volume_up': 'XF86AudioRaiseVolume', 'volume_down': 'XF86AudioLowerVolume', 'mute': 'XF86AudioMute'}
-        self.media_volume_keys = {'volume_up': 'XF86AudioRaiseVolume', 'volume_down': 'XF86AudioLowerVolume', 'mute': 'XF86AudioMute'}
+        self.action_hotkey = {'play_pause' : '<SUPER>z',
+                              'state_stop' : '<SUPER>x',
+                              'volume_up'  : '<SUPER>Up',
+                              'volume_down': '<SUPER>Down',
+                              'show_hide'  : '<SUPER>a',
+                              'prev'       : '<SUPER>Left',
+                              'next'       : '<SUPER>Right',
+                              'download'   : '<Control><SUPER>z'}
+
+        self.multimedia_keys = {'prev'       : 'XF86AudioPrev',
+                                'next'       : 'XF86AudioNext',
+                                'play_pause' : 'XF86AudioPlay',
+                                'state_stop' : 'XF86AudioStop',
+                                'volume_up'  : 'XF86AudioRaiseVolume',
+                                'volume_down': 'XF86AudioLowerVolume',
+                                'mute'       : 'XF86AudioMute'}
+
+        self.media_volume_keys = {'volume_up': 'XF86AudioRaiseVolume',
+                                  'volume_down': 'XF86AudioLowerVolume',
+                                  'mute': 'XF86AudioMute'}
+
         self.media_keys_enabled = True
         self.media_volume_keys_enabled = False
 
@@ -170,7 +203,15 @@ class FC():
         '''columns configuration'''
         '''for playlists'''
         """translations of key words must match exactly with the translations of column.key names in PlaylistTreeControl"""
-        self.columns = {'*': [True, 0, 40], 'N': [True, 1, 35], 'Composer': [False, 2, 80], 'Artist': [False, 3, 90], 'Title': [False, 4, 70], 'Track': [True, 5, 450], 'Time': [True, 6, 50], "Album": [False, 7, 90], 'Year': [False, 8, 50]}
+        self.columns = {'*'       : [True , 0,  40],
+                        'N'       : [True , 1,  35],
+                        'Composer': [False, 2,  80],
+                        'Artist'  : [False, 3,  90],
+                        'Title'   : [False, 4,  70],
+                        'Track'   : [True , 5, 450],
+                        'Time'    : [True , 6,  50],
+                        "Album"   : [False, 7,  90],
+                        'Year'    : [False, 8,  50]}
 
         '''for navigation tree'''
         self.show_full_filename = False

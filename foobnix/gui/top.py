@@ -25,16 +25,16 @@ class TopWidgets(FControl, LoadSave, Gtk.Box):
 
         self.pack_start(self.old_menu.widget, False, False, 0)
 
-        self.new_menu_button = ImageButton("preferences-other", tooltip_text=_("Settings"))
+        self.new_menu_button = ImageButton("application-menu", tooltip_text=_("Menu"))
         self.new_menu_button.connect("button-press-event", self.on_button_press)
 
-        self.pack_start(self.new_menu_button, False, False, 0)
-        self.pack_start(controls.playback, False, False, 0)
-        self.pack_start(controls.os, False, False, 0)
-        self.pack_start(controls.volume, False, False, 0)
+        self.pack_start(self.new_menu_button,        False, False, 0)
+        self.pack_start(controls.playback,           False, False, 0)
+        self.pack_start(controls.os,                 False, False, 0)
+        self.pack_start(controls.volume,             False, False, 0)
         self.pack_start(Gtk.SeparatorToolItem.new(), False, False, 0)
-        self.pack_start(controls.record, False, False, 0)
-        self.pack_start(controls.seek_bar, True, True, 0)
+        self.pack_start(controls.record,             False, False, 0)
+        self.pack_start(controls.seek_bar,            True,  True, 0)
 
         """menu init"""
         menu = Popup()

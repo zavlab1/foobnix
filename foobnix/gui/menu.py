@@ -30,12 +30,12 @@ class MenuBarWidget(FControl):
 
         """File"""
         file = top.add_submenu(_("File"))
-        file.add_image_item(_("Add File(s)"), "folder-open", self.controls.on_add_files)
-        file.add_image_item(_("Add Folder(s)"), "folder-open", self.controls.on_add_folders)
-        file.add_image_item(_("Save Playlist As"), "document-save-as",
-                            lambda: self.controls.notetabs.on_save_playlist(self.controls.notetabs.get_current_tree().scroll))
+        file.add_image_item(_("Add File(s)"),      "folder-open",      self.controls.on_add_files)
+        file.add_image_item(_("Add Folder(s)"),    "folder-open",      self.controls.on_add_folders)
+        file.add_image_item(_("Save Playlist As"), "document-save-as", lambda: self.controls.notetabs.on_save_playlist(
+                                                                       self.controls.notetabs.get_current_tree().scroll))
         file.separator()
-        file.add_image_item(_("Quit"), "application-exit", self.controls.quit)
+        file.add_image_item(_("Quit"),             "application-exit", self.controls.quit)
 
         """View"""
         view = top.add_submenu(_("View"))
@@ -51,8 +51,8 @@ class MenuBarWidget(FControl):
 
         separator1 = view.separator() #@UnusedVariable
         equalizer_icon = "view-media-equalizer" if icon_exists("view-media-equalizer") else "format-justify-right"
-        view.add_image_item(_("Equalizer"), equalizer_icon, self.controls.eq.show)
-        view.add_image_item(_("Download Manager"), "go-down", self.controls.dm.show)
+        view.add_image_item(_("Equalizer"),        equalizer_icon, self.controls.eq.show)
+        view.add_image_item(_("Download Manager"), "go-down",      self.controls.dm.show)
         separator2 = view.separator()
 
         pref_icon = "format-justify-fill" if icon_exists("gtk-preferences") else "format-justify-fill"
@@ -83,8 +83,8 @@ class MenuBarWidget(FControl):
         """Playback - Repeat"""
         repeat = playback.add_text_item(_("Repeat"), sub_menu=True)
         repeat_radio_group = []
-        self.lopping_all = repeat.add_radio_item(_("All"), repeat_radio_group, FC().repeat_state == const.REPEAT_ALL)
-        self.lopping_single = repeat.add_radio_item(_("Single"), repeat_radio_group, FC().repeat_state == const.REPEAT_SINGLE)
+        self.lopping_all     = repeat.add_radio_item(_("All"),     repeat_radio_group, FC().repeat_state == const.REPEAT_ALL)
+        self.lopping_single  = repeat.add_radio_item(_("Single"),  repeat_radio_group, FC().repeat_state == const.REPEAT_SINGLE)
         self.lopping_disable = repeat.add_radio_item(_("Disable"), repeat_radio_group, FC().repeat_state == const.REPEAT_NO)
 
         def repeat_all():
@@ -102,8 +102,8 @@ class MenuBarWidget(FControl):
             logging.debug("set repeat_no")
             controls.os.on_load()
 
-        self.lopping_all.connect("activate", lambda * a:repeat_all())
-        self.lopping_single.connect("activate", lambda * a:repeat_single())
+        self.lopping_all    .connect("activate", lambda * a:repeat_all())
+        self.lopping_single .connect("activate", lambda * a:repeat_single())
         self.lopping_disable.connect("activate", lambda * a:repeat_no())
 
         """Playlist View"""
@@ -121,8 +121,7 @@ class MenuBarWidget(FControl):
         help.add_image_item(_("Project page"), "applications-internet", lambda * a:open_link_in_browser(_("http://www.foobnix.com/news/eng")))
         help.add_image_item(_("Issue report"), "dialog-warning", lambda * a:open_link_in_browser("http://code.google.com/p/foobnix/issues/list"))
         help.separator()
-        donate_icon = "help-donate" if icon_exists("help-donate") else "face-wink"
-        help.add_image_item(_("Donate Participate"), donate_icon, lambda * a:open_link_in_browser(_("http://www.foobnix.com/donate/eng")))
+        help.add_image_item(_("Donate Participate"), "help-donate", lambda * a:open_link_in_browser(_("http://www.foobnix.com/donate/eng")))
 
         #help.add_image_item("Help", "help-contents")
 
