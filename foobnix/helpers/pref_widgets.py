@@ -14,6 +14,8 @@ from foobnix.fc.fc import FC
 from foobnix.helpers.dialog_entry import file_chooser_dialog
 from foobnix.helpers.my_widgets import ButtonIconText
 from foobnix.helpers.window import ChildTopWindow
+from foobnix.util.const import ICON_FOOBNIX_PATH, ICON_FOOBNIX_PLAY_PATH, ICON_FOOBNIX_PAUSE_PATH, \
+    ICON_FOOBNIX_STOP_PATH, ICON_FOOBNIX_RADIO_PATH
 from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 
@@ -77,7 +79,7 @@ class IconBlock(Gtk.Box):
         if not file:
             return None
         self.entry.set_text(file[0])
-        self.modconst.apeend_icon(self, file[0], True)
+        self.modconst.append_icon(self, file[0], True)
         self.all_icons.append(file[0])
 
     def on_change_icon(self, *a):
@@ -173,18 +175,35 @@ class ModelConstructor():
     def __init__(self, all_icons):
 
         self.model = Gtk.ListStore(GObject.TYPE_OBJECT, str)
+        self.all_icons = all_icons
+        for icon_path in all_icons:
+            self.append_icon(None, icon_path)
+        if not len(self.model) < 5:
+            logging.error("Icon count less 5. Reset icons")
+            self.reset_icons()
 
-        for icon_name in all_icons:
-            self.append_icon(None, icon_name)
-
-    def append_icon(self, calling_object, icon_name, active=False):
+    def append_icon(self, calling_object, icon_path, active=False):
         try:
-            pixbuf = create_pixbuf_from_path(icon_name, self.ICON_SIZE)
-            self.model.append([pixbuf, icon_name])
+            pixbuf = create_pixbuf_from_path(icon_path, self.ICON_SIZE)
+            self.model.append([pixbuf, icon_path])
             if active:
                 calling_object.combobox.set_active(len(self.model) - 1)
         except Exception as e:
             logging.error(e)
+
+    def reset_icon(self):
+        logging.info("Try to reset icons to default")
+        self.all_icons = [ICON_FOOBNIX_PATH,
+                          ICON_FOOBNIX_PLAY_PATH,
+                          ICON_FOOBNIX_PAUSE_PATH,
+                          ICON_FOOBNIX_STOP_PATH,
+                          ICON_FOOBNIX_RADIO_PATH,
+                          "images/foobnix-tux.gif"]
+        self.model.clear()
+        for icon_path in self.all_icons:
+            self.append_icon(None, icon_path)
+        FC().all_icons = self.all_icons[:]
+        logging.info("Reset successfully")
 
     def delete_icon(self, iter):
         self.model.remove(iter)
