@@ -175,9 +175,9 @@ class ModelConstructor():
         self.model = Gtk.ListStore(GObject.TYPE_OBJECT, str)
 
         for icon_name in all_icons:
-            self.apeend_icon(None, icon_name)
+            self.append_icon(None, icon_name)
 
-    def apeend_icon(self, calling_object, icon_name, active=False):
+    def append_icon(self, calling_object, icon_name, active=False):
         try:
             pixbuf = create_pixbuf_from_path(icon_name, self.ICON_SIZE)
             self.model.append([pixbuf, icon_name])
