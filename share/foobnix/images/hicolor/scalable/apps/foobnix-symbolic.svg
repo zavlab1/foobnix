@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
-   height="4.5156mm"
-   width="4.5156mm"
+   height="16.000158"
+   width="16.000158"
    version="1.1"
    viewBox="0 0 15.999999 15.999999"
    inkscape:version="0.91 r"
@@ -30,21 +30,22 @@
      id="namedview30"
      showgrid="false"
      inkscape:zoom="14.749854"
-     inkscape:cx="8.0000791"
+     inkscape:cx="-3.7288505"
      inkscape:cy="2.5762967"
      inkscape:window-x="32"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     units="px" />
   <defs
      id="defs4">
     <linearGradient
        id="linearGradient8609"
-       y2="512.51"
+       y2="512.51001"
        gradientUnits="userSpaceOnUse"
-       x2="338.46"
-       y1="520.48"
-       x1="338.57">
+       x2="338.45999"
+       y1="520.47998"
+       x1="338.57001">
       <stop
          id="stop8605"
          stop-color="#10568c"
@@ -60,33 +61,32 @@
        clipPathUnits="userSpaceOnUse">
       <rect
          id="rect11118"
-         ry=".75905"
+         ry="0.75905001"
          height="12.725"
          width="12.809"
-         y="514.02"
-         x="331.57"
-         stroke-width="0"
-         fill="#fff" />
+         y="514.02002"
+         x="331.57001"
+         style="fill:#ffffff;stroke-width:0" />
     </clipPath>
     <filter
        id="filter12218"
        style="color-interpolation-filters:sRGB"
        height="1.1207"
        width="1.1194"
-       y="-.060326"
-       x="-.059677">
+       y="-0.060325999"
+       x="-0.059677001">
       <feGaussianBlur
          id="feGaussianBlur12220"
          stdDeviation="0.47315045" />
     </filter>
     <linearGradient
        id="linearGradient12222"
-       y2="516.73"
+       y2="516.72998"
        gradientUnits="userSpaceOnUse"
-       x2="340.6"
-       gradientTransform="translate(.30633 .26804)"
-       y1="516.73"
-       x1="335.43">
+       x2="340.60001"
+       gradientTransform="translate(0.30633,0.26804)"
+       y1="516.72998"
+       x1="335.42999">
       <stop
          id="stop11482"
          stop-color="#d0d0d0"
@@ -112,30 +112,28 @@
   </metadata>
   <g
      id="layer1"
-     transform="translate(-330 -512.36)">
+     transform="translate(-330,-512.36)">
     <rect
        id="rect4557"
        ry="1.6822"
        height="14.838"
        width="15.086"
        y="512.94"
-       x="330.46"
-       stroke-width="0"
-       fill="#27699c"
-       style="fill:#4d4d4d;fill-opacity:1" />
+       x="330.45999"
+       style="fill:#bebebe;fill-opacity:1;stroke-width:0;stroke:none" />
     <rect
        id="rect4559"
-       ry=".75905"
+       ry="0.75905001"
        height="12.725"
        width="12.809"
-       y="514.02"
-       x="331.57"
-       stroke-width="0"
-       fill="#fff" />
+       y="514.02002"
+       x="331.57001"
+       style="fill:#ffffff;stroke-width:0;stroke:none" />
     <path
        id="rect3340"
-       fill-opacity="0"
-       d="m330 512.36v16h16v-16h-16z" />
+       d="m 330,512.36 0,16 16,0 0,-16 -16,0 z"
+       inkscape:connector-curvature="0"
+       style="fill-opacity:0" />
     <path
        style="fill:#ffffff;stroke-width:0"
        inkscape:connector-curvature="0"
@@ -143,7 +141,7 @@
        id="path11128" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:#4d4d4d;stroke-width:0;fill-opacity:1"
+       style="fill:#bebebe;fill-opacity:1;stroke-width:0;stroke:none"
        d="m 342.75,520.41 -4.551,2.6164 -4.5664,2.5894 0.01,-5.2495 0.0407,-5.2493 4.5414,2.633 z"
        id="path4169" />
   </g>
