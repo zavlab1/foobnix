@@ -8,6 +8,7 @@ Created on 25 сент. 2010
 import os
 import logging
 import threading
+from foobnix.util import idle_task
 
 from gi.repository import Gtk
 from gi.repository import GLib
@@ -224,8 +225,8 @@ class NavigationTreeControl(CommonTreeControl, LoadSave):
         #self.controls.search_progress.background_spinner_wrapper(task, to_tree, to_model)
 
     def add_folder(self, in_new_tab=False):
-        chooser = Gtk.FileChooserDialog(title=_("Choose directory with music"),
-                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
+        chooser = Gtk.FileChooserDialog(title  =_("Choose directory with music"),
+                                        action =Gtk.FileChooserAction.SELECT_FOLDER,
                                         buttons=(_("Open"), Gtk.ResponseType.OK))
         chooser.set_default_response(Gtk.ResponseType.OK)
         chooser.set_select_multiple(True)

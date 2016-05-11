@@ -6,6 +6,7 @@ Created on Dec 7, 2010
 '''
 
 from gi.repository import Gtk
+from gi.repository import GLib
 
 from foobnix.fc.fc import FC
 from foobnix.fc.fc_cache import FCache
@@ -75,6 +76,12 @@ class TabHelperControl(TabGeneral):
         tree = tab_child.get_child()
         self.controls.update_music_tree(tree, n)
 
+    def normalize_columns(self):
+        for page in xrange(self.get_n_pages()):
+            tab_content = self.get_nth_page(page)
+            tree = tab_content.get_child()
+            tree.normalize_columns_width()
+
     def on_load(self):
         if FC().tabs_mode == "Single":
             self.set_show_tabs(False)
@@ -82,6 +89,7 @@ class TabHelperControl(TabGeneral):
         self.controls.load_music_tree()
         self.set_current_page(FC().nav_selected_tab)
         self.loaded = True
+        GLib.idle_add(self.normalize_columns, priority=GLib.PRIORITY_LOW)
 
     def save_tabs(self):
         '''need for one_thread_save method'''

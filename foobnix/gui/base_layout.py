@@ -127,16 +127,10 @@ class BaseFoobnixLayout(FControl, LoadSave):
 
     def save_left_panel(self):
         left_position = self.hpaned_left.get_position()
+        tabhelper = self.controls.perspectives.get_perspective('fs').get_tabhelper()
         if left_position != FC().hpaned_left and left_position > 0:
             FC().hpaned_left = left_position
-            self.normalize_columns()
-
-    def normalize_columns(self):
-        tabhelper = self.controls.perspectives.get_perspective('fs').get_tabhelper()
-        for page in xrange(tabhelper.get_n_pages()):
-            tab_content = tabhelper.get_nth_page(page)
-            tree = tab_content.get_child()
-            tree.normalize_columns_width()
+            tabhelper.normalize_columns()
 
     def on_configure_event(self, w, e):
         FC().main_window_size = [e.x, e.y, e.width, e.height]
