@@ -36,7 +36,7 @@
      inkscape:window-x="32"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="svg2"
      inkscape:snap-bbox="true"
      inkscape:snap-bbox-midpoints="false"
      inkscape:snap-object-midpoints="true"
@@ -142,26 +142,11 @@
      id="layer1"
      transform="translate(-330 -512.36)"
      style="stroke:none">
-    <rect
-       id="rect4557"
-       ry="1.6822"
-       height="14.838"
-       width="15.086"
-       y="512.94"
-       x="330.46"
-       stroke-width="0"
-       fill="#27699c"
-       style="stroke:none;stroke-opacity:0.94117647;fill:#bebebe;fill-opacity:1" />
-    <rect
-       id="rect4559"
-       ry=".75905"
-       height="12.725"
-       width="12.809"
-       y="514.02"
-       x="331.57"
-       stroke-width="0"
-       fill="#fff"
-       style="stroke:none" />
+    <path
+       style="stroke:none;stroke-opacity:0.94117647;fill:#bebebe;fill-opacity:1"
+       d="M 2.1425781 0.58007812 C 1.21063 0.58007812 0.4609375 1.3297706 0.4609375 2.2617188 L 0.4609375 13.736328 C 0.4609375 14.668276 1.21063 15.417969 2.1425781 15.417969 L 13.863281 15.417969 C 14.795229 15.417969 15.546875 14.668276 15.546875 13.736328 L 15.546875 2.2617188 C 15.546875 1.3297706 14.795229 0.58007812 13.863281 0.58007812 L 2.1425781 0.58007812 z M 2.328125 1.6601562 L 13.619141 1.6601562 C 14.039659 1.6601562 14.378906 1.999404 14.378906 2.4199219 L 14.378906 13.626953 C 14.378906 14.047471 14.039659 14.384766 13.619141 14.384766 L 2.328125 14.384766 C 1.9076071 14.384766 1.5703125 14.047471 1.5703125 13.626953 L 1.5703125 2.4199219 C 1.5703125 1.999404 1.9076071 1.6601562 2.328125 1.6601562 z "
+       transform="matrix(0.99998999,0,0,0.99998999,330,512.36)"
+       id="rect4557" />
     <path
        id="rect3340"
        d="m330 512.36v16h16v-16h-16z"
@@ -226,32 +211,9 @@
      y="7.2203565"
      ry="0.55932277"
      rx="0" />
-  <rect
+  <path
      style="opacity:1;fill:#bebebe;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
-     id="rect13102"
-     width="10.067795"
-     height="3.4576268"
-     x="2.9152539"
-     y="9.5423717"
-     ry="0.55931741"
-     rx="0.55931741" />
-  <circle
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:0.94117647"
-     id="path13104"
-     cx="7.8474569"
-     cy="11.338982"
-     r="0.677966" />
-  <circle
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:0.94117647"
-     id="path13106"
-     cx="11.932201"
-     cy="10.542372"
-     r="0.44067791" />
-  <ellipse
-     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:0.94117647"
-     id="path13108"
-     cx="11.9661"
-     cy="12.067795"
-     rx="0.45762706"
-     ry="0.44067791" />
+     d="M 3.4746094 9.5429688 C 3.1647444 9.5429688 2.9160156 9.7916986 2.9160156 10.101562 L 2.9160156 12.441406 C 2.9160156 12.751271 3.1647444 13 3.4746094 13 L 12.423828 13 C 12.733693 13 12.982422 12.751271 12.982422 12.441406 L 12.982422 10.101562 C 12.982422 9.7916986 12.733693 9.5429686 12.423828 9.5429688 L 3.4746094 9.5429688 z M 11.931641 10.101562 A 0.44068232 0.44068232 0 0 1 12.373047 10.542969 A 0.44068232 0.44068232 0 0 1 11.931641 10.982422 A 0.44068232 0.44068232 0 0 1 11.492188 10.542969 A 0.44068232 0.44068232 0 0 1 11.931641 10.101562 z M 7.8476562 10.660156 A 0.67797279 0.67797279 0 0 1 8.5253906 11.339844 A 0.67797279 0.67797279 0 0 1 7.8476562 12.017578 A 0.67797279 0.67797279 0 0 1 7.1699219 11.339844 A 0.67797279 0.67797279 0 0 1 7.8476562 10.660156 z M 11.966797 11.626953 A 0.45763164 0.44068232 0 0 1 12.423828 12.068359 A 0.45763164 0.44068232 0 0 1 11.966797 12.507812 A 0.45763164 0.44068232 0 0 1 11.507812 12.068359 A 0.45763164 0.44068232 0 0 1 11.966797 11.626953 z "
+     transform="scale(0.99998999,0.99998999)"
+     id="rect13102" />
 </svg>
