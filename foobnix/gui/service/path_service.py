@@ -4,14 +4,15 @@ Created on 3 окт. 2010
 
 @author: ivan
 '''
-import os.path, sys
+
 import logging
+import os.path, sys
 
 
 def get_foobnix_resourse_path_by_name(filename):
     if not filename:
         return None
-    #print "--------------------------------------"
+
     dir = os.path.join(sys.path[0], "share")
     prefix = sys.path[0] if os.path.exists(dir) else os.path.abspath(os.path.join(os.sep, "usr"))
 
@@ -23,13 +24,10 @@ def get_foobnix_resourse_path_by_name(filename):
     for path in paths:
         full_path = os.path.join(path, filename)
         if os.path.isfile(full_path):
-            #print "Найден: " + full_path
             return full_path
-    #print "Не найден: " + filename
 
     if filename.startswith("images"):
         return get_foobnix_resourse_path_by_name(filename.replace("images", "icons", 1))
 
     logging.error("File " + filename + " not found")
-    print "Совсем не найден: " + filename
     raise TypeError("******* WARNING: File " + filename + " not found *******")
