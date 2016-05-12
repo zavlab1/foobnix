@@ -10,10 +10,10 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
-   height="16"
-   width="16"
+   height="48"
+   width="48.000008"
    version="1.1"
-   viewBox="0 0 15.999841 15.999841"
+   viewBox="0 0 47.999531 47.999523"
    inkscape:version="0.91 r"
    sodipodi:docname="foobnix.svg">
   <sodipodi:namedview
@@ -30,16 +30,22 @@
      id="namedview4224"
      showgrid="true"
      inkscape:zoom="18.16"
-     inkscape:cx="11.908235"
-     inkscape:cy="12.246532"
+     inkscape:cx="18.380263"
+     inkscape:cy="23.840696"
      inkscape:window-x="32"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     units="px">
+     units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
-       id="grid4150" />
+       id="grid4150"
+       originx="15.998301"
+       originy="15.999291" />
   </sodipodi:namedview>
   <defs
      id="defs4">
@@ -50,7 +56,7 @@
        x2="338.45999"
        y1="520.47998"
        x1="338.57001"
-       gradientTransform="matrix(1.0605753,0,0,1.0783016,-20.47464,-40.744954)">
+       gradientTransform="matrix(3.1811131,0,0,3.2346844,-737.21971,-1162.8392)">
       <stop
          id="stop8605"
          stop-color="#10568c"
@@ -117,39 +123,39 @@
   </metadata>
   <g
      id="layer1"
-     transform="translate(-330,-512.36016)">
+     transform="translate(-314.0017,-496.35977)">
     <rect
        id="rect4557"
        ry="1.6822"
-       height="15.99984"
-       width="15.99984"
-       y="512.35907"
-       x="330.00308"
+       height="47.99625"
+       width="47.990273"
+       y="496.35977"
+       x="314.01096"
        rx="1.6822"
        style="fill:#27699c;stroke-width:0" />
     <rect
        id="rect4559"
        ry="1.0117042"
-       height="13.721389"
-       width="13.584909"
-       y="513.52368"
-       x="331.18033"
+       height="41.161362"
+       width="40.74688"
+       y="499.85336"
+       x="317.54199"
        rx="1.0122038"
        style="fill:#ffffff;stroke-width:0" />
     <path
        id="rect3340"
-       d="m 330,512.36 0,16 16,0 0,-16 -16,0 z"
+       d="m 314.0017,496.36257 0,47.99672 47.99076,0 0,-47.99672 -47.99076,0 z"
        inkscape:connector-curvature="0"
        style="fill-opacity:0" />
     <path
        style="fill:#ffffff;stroke-width:0"
        inkscape:connector-curvature="0"
-       d="m 343.03755,520.41399 -4.82668,2.82127 -4.84301,2.79216 0.0106,-5.66044 0.0432,-5.66033 4.8165,2.83917 z"
+       d="m 353.10682,520.52289 -14.47725,8.46323 -14.52623,8.37591 0.0318,-16.98016 0.12957,-16.97983 14.44672,8.51693 z"
        id="path11128" />
     <path
        inkscape:connector-curvature="0"
        style="fill:url(#linearGradient8609);stroke-width:0"
-       d="m 343.03755,520.41399 -4.82668,2.82127 -4.84301,2.79216 0.0106,-5.66055 0.0432,-5.66033 4.8165,2.83917 z"
+       d="m 353.10682,520.52289 -14.47725,8.46323 -14.52623,8.37591 0.0318,-16.98049 0.12957,-16.97983 14.44672,8.51693 z"
        id="path4169" />
   </g>
 </svg>
