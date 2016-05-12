@@ -86,7 +86,7 @@ class LastFmService():
         return self.init_thread()
 
     def init_thread(self):
-        #time.sleep(5)
+        time.sleep(5)
         if not self.controls.net_wrapper.is_internet():
             return None
 
@@ -102,14 +102,14 @@ class LastFmService():
             self.cache = Cache(self.network)
 
             """scrobbler"""
-            scrobbler_network = pylast.get_lastfm_network(username=username, password_hash=password_hash)
+            scrobbler_network = pylast.get_lastfm_network(username=username, password_hash=FCBase().lfm_password)
             self.scrobbler = scrobbler_network.get_scrobbler("fbx", "1.0")
         except:
             self.network = None
             self.scrobbler = None
             from gi.repository import GLib
             GLib.idle_add(self.controls.statusbar.set_text,
-                          ("Error last.fm connection with %s/%s" % (username, FCBase().lfm_password)))
+                          (_("Error last.fm connection for user %s. Check your password in Preferences-Network") % (username)))
             logging.error("Either invalid last.fm login or password or network problems")
 
     def get_network(self):

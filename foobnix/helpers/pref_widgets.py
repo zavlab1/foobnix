@@ -178,8 +178,8 @@ class ModelConstructor():
         self.all_icons = all_icons
         for icon_path in all_icons:
             self.append_icon(None, icon_path)
-        if not len(self.model) < 5:
-            logging.error("Icon count less 5. Reset icons")
+        if not self.model.get_iter_first():
+            logging.error("No icon is found")
             self.reset_icons()
 
     def append_icon(self, calling_object, icon_path, active=False):
@@ -203,7 +203,7 @@ class ModelConstructor():
         for icon_path in self.all_icons:
             self.append_icon(None, icon_path)
         FC().all_icons = self.all_icons[:]
-        logging.info("Reset successfully")
+        logging.info("Icons have been reset to default")
 
     def delete_icon(self, iter):
         self.model.remove(iter)

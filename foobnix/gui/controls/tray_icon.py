@@ -114,7 +114,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     @idle_task
     def set_from_file(self, path):
-        super(TrayIconControls, self).set_from_file()
+        super(TrayIconControls, self).set_from_file(path)
 
     def on_save(self):
         pass

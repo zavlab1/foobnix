@@ -15,14 +15,16 @@ VERSION = FOOBNIX_VERSION
 
 data_files = [
     ('share/applications', glob.glob('share/applications/*.desktop')),
-    ('share/pixmaps', glob.glob('share/pixmaps/*.*')),
     ('share/foobnix/images', glob.glob('share/foobnix/images/*.*')),
-    ('share/foobnix/images/hicolor', glob.glob('share/foobnix/images/hicolor/*.*')),
-    ('share/foobnix/images/hicolor/scalable', glob.glob('share/foobnix/images/hicolor/scalable/*.*')),
     ('share/foobnix/images/hicolor/scalable/actions', glob.glob('share/foobnix/images/hicolor/scalable/actions/*.*')),
-    ('share/foobnix/images/hicolor/scalable/apps', glob.glob('share/foobnix/images/hicolor/scalable/apps/*.*')),
     ('share/foobnix/images/theme', glob.glob('share/foobnix/images/theme/*.*')),
     ('share/foobnix/radio', glob.glob('share/foobnix/radio/*.*')),
+    ('share/icons/hicolor/48x48/apps', glob.glob('share/icons/hicolor/48x48/apps/*.*')),
+    ('share/icons/hicolor/scalable/actions', glob.glob('share/icons/hicolor/scalable/actions/*.*')),
+    ('share/icons/hicolor/scalable/apps', glob.glob('share/icons/hicolor/scalable/apps/*.*')),
+    ('share/icons/hicolor/symbolic/actions', glob.glob('share/icons/hicolor/symbolic/actions/*.*')),
+    ('share/icons/hicolor/symbolic/apps', glob.glob('share/icons/hicolor/symbolic/apps/*.*')),
+    ('share/pixmaps', glob.glob('share/pixmaps/*.*')),
     ('share/man/man1', glob.glob('docs/*')),
 ]
 
