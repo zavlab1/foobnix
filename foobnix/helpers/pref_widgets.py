@@ -191,7 +191,7 @@ class ModelConstructor():
         except Exception as e:
             logging.error(e)
 
-    def reset_icon(self):
+    def reset_icons(self):
         logging.info("Try to reset icons to default")
         self.all_icons = [ICON_FOOBNIX_PATH,
                           ICON_FOOBNIX_PLAY_PATH,
