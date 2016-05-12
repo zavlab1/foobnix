@@ -26,7 +26,7 @@ from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 
 foobnix_localization()
 
-LOGO = get_foobnix_resourse_path_by_name(ICON_FOOBNIX)
+LOGO = ICON_FOOBNIX
 FFMPEG_NAME = "ffmpeg_foobnix"
 #fix win
 if os.name == 'posix':

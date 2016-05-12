@@ -4,22 +4,22 @@ Created on Feb 26, 2010
 @author: ivan
 '''
 
-import os
 from gi.repository import Gtk
-import sys
-import urllib
-import shutil
-import thread
-import logging
-import threading
 
-from subprocess import Popen
+import logging
+import os
+import sys
+import shutil
+import subprocess
+import thread
+import threading
+import urllib
+
 from foobnix.fc.fc import FC
-from foobnix.util.const import ICON_FOOBNIX
-from foobnix.helpers.textarea import ScrolledText
 from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.helpers.dialog_entry import directory_chooser_dialog
-import subprocess
+from foobnix.helpers.textarea import ScrolledText
+from foobnix.util.const import ICON_FOOBNIX
 
 
 def open_in_filemanager(path, managers=None):

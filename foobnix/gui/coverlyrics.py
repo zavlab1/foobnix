@@ -10,7 +10,7 @@ from foobnix.fc.fc import FC
 from foobnix.helpers.image import ImageBase
 from foobnix.helpers.pref_widgets import FrameDecorator
 from foobnix.helpers.textarea import TextArea
-from foobnix.util.const import ICON_BLANK_DISK
+from foobnix.util.const import ICON_BLANK_DISK_PATH
 
 
 class CoverLyricsPanel(Gtk.Frame):
@@ -22,7 +22,7 @@ class CoverLyricsPanel(Gtk.Frame):
         self.album_title = Gtk.Label.new(_("Album title"))
         self.set_label_align(0.5, 0.5)
 
-        self.image = ImageBase(ICON_BLANK_DISK, size=FC().info_panel_image_size)
+        self.image = ImageBase(ICON_BLANK_DISK_PATH, size=FC().info_panel_image_size)
         self.image.set_from_pixbuf(self.get_pixbuf())
 
         image_frame = FrameDecorator(_("Cover"), self.image, 0.5, 0.5)

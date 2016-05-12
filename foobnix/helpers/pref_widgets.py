@@ -14,8 +14,8 @@ from foobnix.fc.fc import FC
 from foobnix.helpers.dialog_entry import file_chooser_dialog
 from foobnix.helpers.my_widgets import ButtonIconText
 from foobnix.helpers.window import ChildTopWindow
-from foobnix.util.const import ICON_FOOBNIX_PATH, ICON_FOOBNIX_PLAY_PATH, ICON_FOOBNIX_PAUSE_PATH, \
-    ICON_FOOBNIX_STOP_PATH, ICON_FOOBNIX_RADIO_PATH
+from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_PLAY, ICON_FOOBNIX_PAUSE, \
+    ICON_FOOBNIX_STOP, ICON_FOOBNIX_RADIO
 from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 
@@ -193,11 +193,11 @@ class ModelConstructor():
 
     def reset_icons(self):
         logging.info("Try to reset icons to default")
-        self.all_icons = [ICON_FOOBNIX_PATH,
-                          ICON_FOOBNIX_PLAY_PATH,
-                          ICON_FOOBNIX_PAUSE_PATH,
-                          ICON_FOOBNIX_STOP_PATH,
-                          ICON_FOOBNIX_RADIO_PATH,
+        self.all_icons = [ICON_FOOBNIX,
+                          ICON_FOOBNIX_PLAY,
+                          ICON_FOOBNIX_PAUSE,
+                          ICON_FOOBNIX_STOP,
+                          ICON_FOOBNIX_RADIO,
                           "images/foobnix-tux.gif"]
         self.model.clear()
         for icon_path in self.all_icons:

@@ -7,6 +7,7 @@ Created on Oct 2, 2010
 
 from gi.repository import Gtk
 
+from foobnix.util.const import ICON_FOOBNIX_NAME
 from foobnix.version import FOOBNIX_VERSION
 
 class AboutWindow(Gtk.AboutDialog):
@@ -38,7 +39,7 @@ class AboutWindow(Gtk.AboutDialog):
                                         Aldo Mann""")
 
 
-        self.set_logo_icon_name("foobnix")
+        self.set_logo_icon_name(ICON_FOOBNIX_NAME)
 
     def show(self):
         self.run()

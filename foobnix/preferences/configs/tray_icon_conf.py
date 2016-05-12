@@ -11,7 +11,7 @@ from foobnix.fc.fc import FC
 from foobnix.util import const
 from foobnix.preferences.config_plugin import ConfigPlugin
 from foobnix.helpers.image import ImageBase
-from foobnix.util.const import ICON_BLANK_DISK
+from foobnix.util.const import ICON_BLANK_DISK_PATH
 from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.helpers.pref_widgets import FrameDecorator, VBoxDecorator, ChooseDecorator, \
     IconBlock
@@ -58,7 +58,7 @@ class TrayIconConfig(ConfigPlugin):
         self.icon_controls = ChooseDecorator(self.static_tray_icon.get_radio_button(), FrameDecorator(_("System Icons Dynamic"), line, 0.5, 0.5))
 
         """disc image icon"""
-        image = ImageBase(ICON_BLANK_DISK, 30)
+        image = ImageBase(ICON_BLANK_DISK_PATH, 30)
         self.change_tray_icon = ChooseDecorator(self.static_tray_icon.get_radio_button(), FrameDecorator(_("Disc cover image"), image, 0.5, 0.5))
 
         self.notifier = Gtk.CheckButton.new_with_label(_("Notification pop-up"))

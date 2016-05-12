@@ -118,7 +118,6 @@ class FoobnixCore(BaseFoobnixControls):
     def init_icons(self):
         dir = os.path.join("share", "foobnix", "images")
         local_dir = os.path.join(sys.path[0], dir)
-        print local_dir
 
         if os.path.exists(local_dir):
             Gtk.IconTheme.get_default().append_search_path(local_dir)

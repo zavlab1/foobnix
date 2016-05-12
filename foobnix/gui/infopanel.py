@@ -23,7 +23,7 @@ from foobnix.fc.fc_cache import FCache, COVERS_DIR, LYRICS_DIR
 from foobnix.gui.treeview.simple_tree import SimpleTreeControl
 from foobnix.util import idle_task
 from foobnix.util.const import FTYPE_NOT_UPDATE_INFO_PANEL, \
-    ICON_BLANK_DISK, SITE_LOCALE
+    ICON_BLANK_DISK_PATH, SITE_LOCALE
 from foobnix.util.bean_utils import update_parent_for_beans, \
     update_bean_from_normalized_text
 from foobnix.thirdparty.lyr import get_lyrics
@@ -108,7 +108,7 @@ class InfoPanelWidget(Gtk.Frame, LoadSave, FControl):
 
         """image and similar artists"""
         ibox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        self.image = ImageBase(ICON_BLANK_DISK, FC().info_panel_image_size)
+        self.image = ImageBase(ICON_BLANK_DISK_PATH, FC().info_panel_image_size)
 
         lbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
 

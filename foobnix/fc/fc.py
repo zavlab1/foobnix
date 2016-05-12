@@ -13,11 +13,11 @@ from foobnix.fc.fc_cache import FCache
 from foobnix.util.singleton import Singleton
 from foobnix.util.agent import get_ranmom_agent
 from foobnix.fc.fc_helper import FCStates, CONFIG_DIR
-from foobnix.util.const import ICON_FOOBNIX_PATH      ,\
-                               ICON_FOOBNIX_PLAY_PATH ,\
-                               ICON_FOOBNIX_PAUSE_PATH,\
-                               ICON_FOOBNIX_STOP_PATH ,\
-                               ICON_FOOBNIX_RADIO_PATH
+from foobnix.util.const import ICON_FOOBNIX      ,\
+                               ICON_FOOBNIX_PLAY ,\
+                               ICON_FOOBNIX_PAUSE,\
+                               ICON_FOOBNIX_STOP ,\
+                               ICON_FOOBNIX_RADIO
 
 
 CONFIG_FILE = os.path.join(CONFIG_DIR , "foobnix.pkl")
@@ -120,19 +120,19 @@ class FC():
         self.system_icons_dinamic = False
         self.change_tray_icon = False
 
-        self.all_icons = [ICON_FOOBNIX_PATH,
-                          ICON_FOOBNIX_PLAY_PATH,
-                          ICON_FOOBNIX_PAUSE_PATH,
-                          ICON_FOOBNIX_STOP_PATH,
-                          ICON_FOOBNIX_RADIO_PATH,
+        self.all_icons = [ICON_FOOBNIX,
+                          ICON_FOOBNIX_PLAY,
+                          ICON_FOOBNIX_PAUSE,
+                          ICON_FOOBNIX_STOP,
+                          ICON_FOOBNIX_RADIO,
                           "images/foobnix-tux.gif"]
 
-        self.static_icon_entry = ICON_FOOBNIX_PATH
+        self.static_icon_entry = ICON_FOOBNIX
 
-        self.play_icon_entry = ICON_FOOBNIX_PLAY_PATH
-        self.pause_icon_entry = ICON_FOOBNIX_PAUSE_PATH
-        self.stop_icon_entry = ICON_FOOBNIX_STOP_PATH
-        self.radio_icon_entry = ICON_FOOBNIX_RADIO_PATH
+        self.play_icon_entry = ICON_FOOBNIX_PLAY
+        self.pause_icon_entry = ICON_FOOBNIX_PAUSE
+        self.stop_icon_entry = ICON_FOOBNIX_STOP
+        self.radio_icon_entry = ICON_FOOBNIX_RADIO
 
         """Notification"""
         self.notifier = True

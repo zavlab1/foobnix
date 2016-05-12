@@ -6,7 +6,6 @@ Created on 29 сент. 2010
 '''
 
 import logging
-from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 from gi.repository import Gdk
 from gi.repository import Gtk
@@ -16,13 +15,12 @@ from foobnix.fc.fc import FC
 from foobnix.gui.controls.playback import PlaybackControls
 from foobnix.gui.model import FModel
 from foobnix.gui.model.signal import FControl
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.gui.state import LoadSave
 from foobnix.helpers.image import ImageBase
 from foobnix.helpers.my_widgets import ImageButton, AlternateVolumeControl
 from foobnix.helpers.pref_widgets import VBoxDecorator
 from foobnix.util import idle_task
-from foobnix.util.const import ICON_FOOBNIX
+from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_PAUSE_NAME
 from foobnix.util.mouse_utils import is_middle_click
 from foobnix.util.text_utils import split_string
 
@@ -125,7 +123,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     def on_load(self):
         if FC().show_tray_icon:
-            self.set_from_icon_name("foobnix-pause")
+            self.set_from_icon_name(ICON_FOOBNIX_PAUSE_NAME)
             self.show()
 
     def update_info_from(self, bean):

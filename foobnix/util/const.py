@@ -51,20 +51,20 @@ DOWNLOAD_STATUS_INACTIVE = _("Inactive")
 DOWNLOAD_STATUS_LOCK = _("Lock")
 DOWNLOAD_STATUS_ERROR = _("Error")
 
-ICON_FOOBNIX = "images/hicolor/scalable/apps/foobnix.svg"
+ICON_FOOBNIX_NAME = "foobnix"
 
-ICON_FOOBNIX_PLAY = "images/hicolor/scalable/actions/foobnix-play.svg"
-ICON_FOOBNIX_PAUSE = "images/hicolor/scalable/actions/foobnix-pause.svg"
-ICON_FOOBNIX_STOP = "images/hicolor/scalable/actions/foobnix-stop.svg"
-ICON_FOOBNIX_RADIO = "images/hicolor/scalable/actions/foobnix-radio.svg"
-ICON_BLANK_DISK = "images/foobnix-blank-disc.jpg"
+ICON_FOOBNIX_PLAY_NAME = "foobnix-play"
+ICON_FOOBNIX_PAUSE_NAME = "foobnix-pause"
+ICON_FOOBNIX_STOP_NAME = "foobnix-stop"
+ICON_FOOBNIX_RADIO_NAME = "foobnix-radio"
+ICON_BLANK_DISK_NAME = "foobnix-blank-disc"
 
-ICON_FOOBNIX_PATH = "images/hicolor/scalable/apps/foobnix.svg"
+ICON_FOOBNIX = "icons/hicolor/scalable/apps/foobnix.svg"
 
-ICON_FOOBNIX_PLAY_PATH = "images/hicolor/scalable/actions/foobnix-play.svg"
-ICON_FOOBNIX_PAUSE_PATH = "images/hicolor/scalable/actions/foobnix-pause.svg"
-ICON_FOOBNIX_STOP_PATH = "images/hicolor/scalable/actions/foobnix-stop.svg"
-ICON_FOOBNIX_RADIO_PATH = "images/hicolor/scalable/actions/foobnix-radio.svg"
+ICON_FOOBNIX_PLAY = "icons/hicolor/scalable/actions/foobnix-play.svg"
+ICON_FOOBNIX_PAUSE = "icons/hicolor/scalable/actions/foobnix-pause.svg"
+ICON_FOOBNIX_STOP = "icons/hicolor/scalable/actions/foobnix-stop.svg"
+ICON_FOOBNIX_RADIO = "icons/hicolor/scalable/actions/foobnix-radio.svg"
 ICON_BLANK_DISK_PATH = "images/foobnix-blank-disc.jpg"
 
 BEFORE = Gtk.TreeViewDropPosition.BEFORE

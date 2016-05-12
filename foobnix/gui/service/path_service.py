@@ -16,6 +16,7 @@ def get_foobnix_resourse_path_by_name(filename):
              "/usr/local/share/foobnix",
              "/usr/share/pixmaps",
              "/usr/share/foobnix",
+             "share"
              "share/pixmaps",
              "share/foobnix",
              "./",
@@ -23,6 +24,7 @@ def get_foobnix_resourse_path_by_name(filename):
 
     if len(sys.path) > 1:
         paths.append(sys.path[0])
+        paths.append(os.path.join(sys.path[0], "share"))
         paths.append(os.path.join(sys.path[0], "share/pixmaps"))
         paths.append(os.path.join(sys.path[0], "share/foobnix"))
 
