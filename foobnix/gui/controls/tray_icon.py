@@ -20,7 +20,7 @@ from foobnix.helpers.image import ImageBase
 from foobnix.helpers.my_widgets import ImageButton, AlternateVolumeControl
 from foobnix.helpers.pref_widgets import VBoxDecorator
 from foobnix.util import idle_task
-from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_PAUSE_NAME
+from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_NAME
 from foobnix.util.mouse_utils import is_middle_click
 from foobnix.util.text_utils import split_string
 
@@ -123,7 +123,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     def on_load(self):
         if FC().show_tray_icon:
-            self.set_from_icon_name(ICON_FOOBNIX_PAUSE_NAME)
+            self.set_from_icon_name(ICON_FOOBNIX_NAME)
             self.show()
 
     def update_info_from(self, bean):
@@ -155,7 +155,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
             notification = Notify.Notification.new(artist, title, "")
             notification.set_urgency(Notify.Urgency.LOW)
             notification.set_timeout(FC().notify_time)
-            if self.tooltip_image.get_pixbuf() != None:
+            if self.tooltip_image.get_pixbuf():
                 notification.set_icon_from_pixbuf(self.tooltip_image.get_pixbuf())
             notification.show()
 
