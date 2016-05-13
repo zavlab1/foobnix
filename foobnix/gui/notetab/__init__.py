@@ -17,6 +17,7 @@ from foobnix.util import idle_task
 from foobnix.fc.fc_cache import FCache
 from foobnix.helpers.menu import Popup
 from foobnix.gui.state import LoadSave, Quitable
+from foobnix.util.image_util import icon_exists
 from foobnix.util.key_utils import is_key
 from foobnix.util.m3u_utils import m3u_writer
 from foobnix.gui.model.signal import FControl
@@ -134,11 +135,11 @@ class TabGeneral(Gtk.Notebook, FControl, LoadSave, Quitable):
 
         old_name = self.get_full_tab_name(tab)
 
-        window = Gtk.Window()
+        window = Gtk.Window.new(Gtk.WindowType.TOPLEVEL)
         window.set_decorated(False)
-        window.set_position(Gtk.WIN_POS_MOUSE)
+        window.set_position(Gtk.WindowPosition.MOUSE)
         window.set_border_width(5)
-        entry = Gtk.Entry()
+        entry = Gtk.Entry.new()
         entry.set_text(old_name)
         entry.show()
 
@@ -344,7 +345,8 @@ class NoteTabControl(TabGeneral):
 
     def tab_menu_creator(self, widget, tab_child):
         widget.menu = Popup()
-        widget.menu.add_item(_("Rename tab"), "", lambda: self.on_rename_tab(tab_child, self.default_angle), None)
+        rename_icon = "document-edit" if icon_exists("document-edit") else "text-editor"
+        widget.menu.add_item(_("Rename tab"), rename_icon, lambda: self.on_rename_tab(tab_child, self.default_angle), None)
         widget.menu.add_item(_("Save playlist as"), "document-save-as", lambda: self.on_save_playlist(tab_child))
         widget.menu.add_item(_("Close tab"), "window-close", lambda: self.on_delete_tab(tab_child), None)
         widget.show()
