@@ -25,7 +25,7 @@ class TopWidgets(FControl, LoadSave, Gtk.Box):
 
         self.pack_start(self.old_menu.widget, False, False, 0)
 
-        menu_icon = "gtk-preferences" if icon_exists("open-menu") else "application-menu"
+        menu_icon = "open-menu" if icon_exists("open-menu") else "application-menu"
         self.new_menu_button = ImageButton(menu_icon, tooltip_text=_("Menu"))
         self.new_menu_button.connect("button-press-event", self.on_button_press)
 
