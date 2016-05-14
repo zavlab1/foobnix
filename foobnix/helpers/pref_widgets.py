@@ -31,7 +31,7 @@ class IconBlock(Gtk.Box):
         self.combobox = Gtk.ComboBox()
         self.entry = Gtk.Entry()
         self.entry.set_size_request(300, -1)
-        self.entry.set_property("margin", 0)
+        self.entry.set_property("margin", 5)
         if filename:
             self.entry.set_text(filename)
         else:
@@ -170,7 +170,7 @@ class HBoxLableEntry(Gtk.Box):
 
 class ModelConstructor():
 
-    ICON_SIZE = 16
+    ICON_SIZE = 22
 
     def __init__(self, all_icons):
 

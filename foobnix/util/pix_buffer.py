@@ -25,7 +25,7 @@ def resize_pixbuf(pixbuf, size):
     else:
         return pixbuf
 
-def create_pixbuf_from_path(path, size):
+def create_pixbuf_from_path(path, size=None):
     if not path:
         return None
     if not os.path.isfile(path):
