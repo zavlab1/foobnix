@@ -30,8 +30,8 @@ class IconBlock(Gtk.Box):
 
         self.combobox = Gtk.ComboBox()
         self.entry = Gtk.Entry()
-        self.entry.set_size_request(300, -1)
-        self.entry.set_property("margin", 5)
+        self.entry.set_size_request(300, 30)
+        self.entry.set_property("margin", 0)
         if filename:
             self.entry.set_text(filename)
         else:
