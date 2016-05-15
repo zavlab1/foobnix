@@ -25,9 +25,6 @@ class Controller(Gtk.Box, LoadSave, Quitable, Filterable):
         self.perspectives = {}
         self.set_buttons_style()
 
-
-        print viewport.get_style_context().get_background_color(Gtk.StateFlags.NORMAL)
-
         ## internal property
         self._perspectives = []
 

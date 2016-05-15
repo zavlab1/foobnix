@@ -4,14 +4,16 @@ Created on Oct 26, 2010
 @author: ivan
 '''
 
-gi.require_version('Notify', '0.7')
-
-from gi.repository import Gtk
-from gi.repository import Notify
+import gi
 import time
 import thread
 import logging
 import threading
+
+gi.require_version('Notify', '0.7')
+
+from gi.repository import Gtk
+from gi.repository import Notify
 
 from foobnix.fc.fc import FC
 from foobnix.dm.dm_dowloader import Dowloader
