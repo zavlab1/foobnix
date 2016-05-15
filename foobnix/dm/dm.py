@@ -4,6 +4,8 @@ Created on Oct 26, 2010
 @author: ivan
 '''
 
+gi.require_version('Notify', '0.7')
+
 from gi.repository import Gtk
 from gi.repository import Notify
 import time

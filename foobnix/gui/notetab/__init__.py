@@ -13,7 +13,6 @@ import logging
 import threading
 
 from foobnix.fc.fc import FC
-from foobnix.util import idle_task
 from foobnix.fc.fc_cache import FCache
 from foobnix.helpers.menu import Popup
 from foobnix.gui.state import LoadSave, Quitable
@@ -48,7 +47,17 @@ class TabGeneral(Gtk.Notebook, FControl, LoadSave, Quitable):
         #add_button.get_image().set_pixel_size(15)
         self.set_action_widget(add_button, Gtk.PackType.START)
         self.default_angle = 0
+        self.set_tabs_style()
         self.navig = False if isinstance(self, NoteTabControl) else True
+
+    def set_tabs_style(self):
+        self.set_name("navig_tabs")
+        provider = Gtk.CssProvider.new()
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
+        provider.load_from_data(""" GtkNotebook tab {
+                                        padding: 5;
+                                    } """)
 
     def to_eventbox(self, widget, tab_child):
         event = Gtk.EventBox()
