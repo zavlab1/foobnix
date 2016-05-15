@@ -345,7 +345,7 @@ class NoteTabControl(TabGeneral):
 
     def tab_menu_creator(self, widget, tab_child):
         widget.menu = Popup()
-        rename_icon = "document-edit" if icon_exists("document-edit") else "text-editor"
+        rename_icon = "document-edit" if icon_exists("document-edit") else "text-editor-symbolic"
         widget.menu.add_item(_("Rename tab"), rename_icon, lambda: self.on_rename_tab(tab_child, self.default_angle), None)
         widget.menu.add_item(_("Save playlist as"), "document-save-as", lambda: self.on_save_playlist(tab_child))
         widget.menu.add_item(_("Close tab"), "window-close", lambda: self.on_delete_tab(tab_child), None)

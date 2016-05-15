@@ -3,6 +3,7 @@ from foobnix.gui.controls.filter import FilterControl
 __author__ = 'popsul'
 
 from gi.repository import Gtk
+from gi.repository import Gdk
 from foobnix.util import analytics
 from foobnix.gui.state import LoadSave, Quitable, Filterable
 from foobnix.gui.perspectives import StackableWidget, BasePerspective, OneButtonToggled
@@ -22,6 +23,10 @@ class Controller(Gtk.Box, LoadSave, Quitable, Filterable):
         self.button_container = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         self.button_controller = OneButtonToggled()
         self.perspectives = {}
+        self.set_buttons_style()
+
+
+        print viewport.get_style_context().get_background_color(Gtk.StateFlags.NORMAL)
 
         ## internal property
         self._perspectives = []
@@ -35,6 +40,17 @@ class Controller(Gtk.Box, LoadSave, Quitable, Filterable):
         ## insert dummy page
         self.perspectives_container.add(Gtk.Label.new(""))
         self.show_all()
+
+    def set_buttons_style(self):
+        self.set_name("perspective")
+        provider = Gtk.CssProvider.new()
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
+        provider.load_from_data("""
+                                    #perspective .button {
+                                        padding-left: 5;
+                                        padding-right: 5;
+                                    } """)
 
     def attach_perspective(self, perspective):
         assert isinstance(perspective, BasePerspective)
