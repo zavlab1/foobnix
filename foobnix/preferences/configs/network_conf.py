@@ -35,8 +35,8 @@ class NetworkConfig(ConfigPlugin):
 
         all = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         all.show()
-        self.frame = FrameDecorator(_("Proxy Settings"), all, 0.5, 0.5, border_width=0)
-        self.frame.show()
+        frame = FrameDecorator(_("Proxy Settings"), all, 0.5, 0.5, border_width=0)
+        frame.show()
 
         """URL"""
         proxy_box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
@@ -108,12 +108,18 @@ class NetworkConfig(ConfigPlugin):
         check.pack_start(self.vk_test, False, False, 0)
         check.pack_start(self.result, False, True, 0)
 
+
+        self.proxy_options_box = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         """global"""
+
+        self.proxy_options_box.pack_start(proxy_box, False, False, 0)
+        self.proxy_options_box.pack_start(lbox, False, False, 0)
+        self.proxy_options_box.pack_start(pbox, False, False, 0)
+        self.proxy_options_box.pack_start(check, False, False, 0)
+
         all.pack_start(self.enable_proxy, False, False, 0)
-        all.pack_start(proxy_box, False, False, 0)
-        all.pack_start(lbox, False, False, 0)
-        all.pack_start(pbox, False, False, 0)
-        all.pack_start(check, False, False, 0)
+        all.pack_start(self.proxy_options_box, False, False, 0)
+
 
         frame_box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
         frame_box.set_border_width(5)
@@ -123,7 +129,7 @@ class NetworkConfig(ConfigPlugin):
 
         box.pack_start(self.buffer_size(), False, True, 0)
         box.pack_start(self.net_ping, False, True, 0)
-        box.pack_start(self.frame, False, True, 0)
+        box.pack_start(frame, False, True, 0)
 
         self.widget = box
 
@@ -149,9 +155,9 @@ class NetworkConfig(ConfigPlugin):
 
     def on_enable_http_proxy(self, *a):
         if self.enable_proxy.get_active():
-            self.frame.set_sensitive(True)
+            self.proxy_options_box.set_sensitive(True)
         else:
-            self.frame.set_sensitive(False)
+            self.proxy_options_box.set_sensitive(False)
 
     def is_proxy_changed(self):
         if [FC().proxy_enable, FC().proxy_url, FC().proxy_user, FC().proxy_password] != [self.enable_proxy.get_active(), self.proxy_server.get_text(), self.login_text.get_text(), self.password_text.get_text()]:
@@ -177,7 +183,7 @@ class NetworkConfig(ConfigPlugin):
 
     def on_load(self):
         self.enable_proxy.set_active(FC().proxy_enable)
-        self.frame.set_sensitive(FC().proxy_enable)
+        self.proxy_options_box.set_sensitive(FC().proxy_enable)
         self.buffer_adjustment.set_value(FC().network_buffer_size)
 
         if FC().proxy_url:

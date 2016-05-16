@@ -57,6 +57,9 @@ class TabGeneral(Gtk.Notebook, FControl, LoadSave, Quitable):
 
         provider.load_from_data(""" GtkNotebook tab {
                                         padding: 5;
+                                    }
+                                    GtkNotebook .button {
+                                        padding-left: 3;
                                     } """)
 
     def to_eventbox(self, widget, tab_child):
