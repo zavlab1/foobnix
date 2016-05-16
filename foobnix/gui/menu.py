@@ -55,7 +55,7 @@ class MenuBarWidget(FControl):
         view.add_image_item(_("Download Manager"), "go-down",      self.controls.dm.show)
         separator2 = view.separator()
 
-        pref_icon = "format-justify-fill" if icon_exists("gtk-preferences") else "format-justify-fill"
+        pref_icon = "gtk-preferences" if icon_exists("gtk-preferences") else "preferences-system"
         preferences_item = view.add_image_item(_("Preferences"), pref_icon, self.controls.show_preferences)
 
         """if new style menu - remove preferences from View"""
