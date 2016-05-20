@@ -7,6 +7,7 @@ Created on 29 сент. 2010
 
 import logging
 
+
 from gi.repository import Gdk
 from gi.repository import Gtk
 from gi.repository import Notify
@@ -15,6 +16,7 @@ from foobnix.fc.fc import FC
 from foobnix.gui.controls.playback import PlaybackControls
 from foobnix.gui.model import FModel
 from foobnix.gui.model.signal import FControl
+from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.gui.state import LoadSave
 from foobnix.helpers.image import ImageBase
 from foobnix.helpers.my_widgets import ImageButton, AlternateVolumeControl
@@ -112,6 +114,7 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     @idle_task
     def set_from_file(self, path):
+        path = get_foobnix_resourse_path_by_name(path)
         super(TrayIconControls, self).set_from_file(path)
 
     def on_save(self):
