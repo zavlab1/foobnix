@@ -45,8 +45,8 @@ class Controller(Gtk.Box, LoadSave, Quitable, Filterable):
 
         provider.load_from_data("""
                                     #perspective .button {
-                                        padding-left: 5;
-                                        padding-right: 5;
+                                        padding-left: 5px;
+                                        padding-right: 5px;
                                     } """)
 
     def attach_perspective(self, perspective):

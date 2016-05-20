@@ -56,10 +56,10 @@ class TabGeneral(Gtk.Notebook, FControl, LoadSave, Quitable):
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
         provider.load_from_data(""" GtkNotebook tab {
-                                        padding: 5;
+                                        padding: 5px;
                                     }
                                     GtkNotebook .button {
-                                        padding-left: 3;
+                                        padding-left: 3px;
                                     } """)
 
     def to_eventbox(self, widget, tab_child):
