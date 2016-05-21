@@ -11,7 +11,6 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 
 from foobnix.fc.fc import FC
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util import const
 from foobnix.gui.state import LoadSave
 from foobnix.version import FOOBNIX_VERSION
@@ -31,7 +30,7 @@ class MainWindow(Gtk.Window, FControl, LoadSave):
         self.connect("delete-event", self.hide_window)
         self.connect("key-press-event", self.on_key_press)
         try:
-            self.set_icon_from_file(get_foobnix_resourse_path_by_name(const.ICON_FOOBNIX))
+            self.set_icon_name(const.ICON_FOOBNIX_NAME)
         except TypeError as e:
             logging.error(str(e))
 
@@ -106,7 +105,3 @@ class MainWindow(Gtk.Window, FControl, LoadSave):
             FC().window_maximized = True
 
         self.controls.layout.back_saved_allocation()
-
-
-
-
