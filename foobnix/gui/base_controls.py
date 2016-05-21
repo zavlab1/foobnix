@@ -735,7 +735,7 @@ class BaseFoobnixControls():
                 logging.debug("%f LOAD ON START %s" % (time.time() - init, "Instance of " + self.__dict__[element].__class__.__name__))
 
         """load others"""
-        #self.movie_window.hide_all()
+        #self.movie_window.hide()
 
         self.main_window.show()
         self.search_progress.stop()

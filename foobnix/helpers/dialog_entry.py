@@ -4,23 +4,25 @@ Created on 24 авг. 2010
 
 @author: ivan
 '''
-from gi.repository import Gtk
+
 import logging
 
+from gi.repository import Gtk
+
 from foobnix.fc.fc import FC
-from foobnix.helpers.image import ImageBase
-from foobnix.util.const import SITE_LOCALE, ICON_FOOBNIX
+from foobnix.util.const import SITE_LOCALE, ICON_FOOBNIX_NAME
 from foobnix.util.localization import foobnix_localization
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+
 
 foobnix_localization()
+
 
 def responseToDialog(entry, dialog, response):
         dialog.response(response)
 
 def file_selection_dialog(title, current_folder=None):
     chooser = Gtk.FileSelection(title)
-    chooser.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    chooser.set_icon_name(ICON_FOOBNIX_NAME)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_select_multiple(True)
     paths = None
@@ -36,7 +38,7 @@ def file_selection_dialog(title, current_folder=None):
 
 def file_chooser_dialog(title, current_folder=None):
     chooser = Gtk.FileChooserDialog(title, action=Gtk.FileChooserAction.OPEN, buttons=(_("Open"), Gtk.ResponseType.OK))
-    chooser.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    chooser.set_icon_name(ICON_FOOBNIX_NAME)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_select_multiple(True)
     paths = None
@@ -72,7 +74,7 @@ def one_line_dialog(dialog_title, parent=None, entry_text=None, message_text1=No
             Gtk.MessageType.INFO,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_title(dialog_title)
         if message_text1:
             dialog.set_markup(message_text1)
@@ -107,7 +109,7 @@ def two_line_dialog(dialog_title, parent=None, message_text1=None,
             Gtk.MessageType.QUESTION,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_title(dialog_title)
         if message_text1:
             dialog.set_markup(message_text1)
@@ -150,7 +152,7 @@ def info_dialog(title, message, parent=None):
             Gtk.MessageType.INFO,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_title(title)
         dialog.set_markup(title)
         dialog.format_secondary_markup(message)
@@ -165,7 +167,7 @@ def info_dialog_with_link(title, version, link):
             Gtk.MessageType.INFO,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_title(title)
         dialog.set_markup(title)
         dialog.format_secondary_markup("<b>" + version + "</b>")
@@ -183,14 +185,14 @@ def info_dialog_with_link_and_donate(version):
             Gtk.MessageType.INFO,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_title(_("New foobnix release avaliable"))
         dialog.set_markup(_("New foobnix release avaliable"))
         dialog.format_secondary_markup("<b>" + version + "</b>")
 
-        card = Gtk.LinkButton.new_with_label("http://foobnix.com/%s/download.html"%SITE_LOCALE, _("Download and Donate"))
+        card = Gtk.LinkButton.new_with_label("http://foobnix.com/%s/download.html" % SITE_LOCALE, _("Download and Donate"))
         #terminal = Gtk.LinkButton("http://www.foobnix.com/donate/eng#terminal", _("Download and Donate by Webmoney or Payment Terminal"))
-        # link = Gtk.LinkButton("http://www.foobnix.com/support?lang=%s"%SITE_LOCALE, _("Download"))
+        link = Gtk.LinkButton("http://www.foobnix.com/%s/download.html" % SITE_LOCALE, _("Download"))
 
         frame = Gtk.Frame(label="Please donate and download")
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
@@ -224,7 +226,7 @@ def show_entry_dialog(title, description):
             Gtk.MessageType.QUESTION,
             Gtk.ButtonsType.OK,
             None)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_markup(title)
         entry = Gtk.Entry()
         entry.connect("activate", responseToDialog, dialog, Gtk.ResponseType.OK)
@@ -246,7 +248,7 @@ def show_login_password_error_dialog(title, description, login, password):
             Gtk.MessageType.ERROR,
             Gtk.ButtonsType.OK,
             title)
-        dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        dialog.set_icon_name(ICON_FOOBNIX_NAME)
         dialog.set_markup(str(title))
         dialog.format_secondary_markup(description)
 
@@ -272,8 +274,8 @@ def show_login_password_error_dialog(title, description, login, password):
         return [login_text, password_text]
 
 def file_saving_dialog(title, current_folder=None):
-    chooser = Gtk.FileChooserDialog(title, action=Gtk.FileChooserAction.SAVE, buttons=("document-save", Gtk.ResponseType.OK))
-    chooser.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    chooser = Gtk.FileChooserDialog(title, action=Gtk.FileChooserAction.SAVE, buttons=(_("Save"), Gtk.ResponseType.OK))
+    chooser.set_icon_name(ICON_FOOBNIX_NAME)
     chooser.set_default_response(Gtk.ResponseType.OK)
     chooser.set_select_multiple(False)
     if current_folder:
@@ -286,12 +288,12 @@ def file_saving_dialog(title, current_folder=None):
     chooser.destroy()
 
 class FileSavingDialog(Gtk.FileChooserDialog):
-    def __init__(self, title, func, args = None, current_folder=None, current_name=None):
-        Gtk.FileChooserDialog.__init__(self, title, action=Gtk.FileChooserAction.SAVE, buttons=("document-save", Gtk.ResponseType.OK))
+    def __init__(self, title, func, args=None, current_folder=None, current_name=None):
+        Gtk.FileChooserDialog.__init__(self, title, action=Gtk.FileChooserAction.SAVE, buttons=(_("Save"), Gtk.ResponseType.OK))
         self.set_default_response(Gtk.ResponseType.OK)
         self.set_select_multiple(False)
         self.set_do_overwrite_confirmation(True)
-        self.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        self.set_icon_name(ICON_FOOBNIX_NAME)
         if current_folder:
             self.set_current_folder(current_folder)
         if current_name:

@@ -17,16 +17,16 @@ from gi.repository import GLib
 from subprocess import Popen, PIPE
 
 from foobnix.fc.fc_helper import CONFIG_DIR
-from foobnix.util.const import ICON_FOOBNIX
+from foobnix.util.const import ICON_FOOBNIX_NAME
 from foobnix.util.file_utils import open_in_filemanager
 from foobnix.util.localization import foobnix_localization
 from foobnix.helpers.textarea import ScrolledText
 from foobnix.helpers.window import ChildTopWindow
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+
 
 foobnix_localization()
 
-LOGO = ICON_FOOBNIX
+LOGO = ICON_FOOBNIX_NAME
 FFMPEG_NAME = "ffmpeg_foobnix"
 #fix win
 if os.name == 'posix':
@@ -39,7 +39,7 @@ class Converter(ChildTopWindow):
 
         self.area = ScrolledText()
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 10)
-        vbox.pack_start(self.area.scroll)
+        vbox.pack_start(self.area.scroll, True, True, 0)
         vbox.show()
         format_label = Gtk.Label.new(_('Format'))
         bitrate_label = Gtk.Label.new(_('Bitrate'))
@@ -80,7 +80,7 @@ class Converter(ChildTopWindow):
         hbox.set_border_width(10)
         hbox.show_all()
 
-        vbox.pack_start(hbox, False)
+        vbox.pack_start(hbox, False, False, 0)
 
         self.button_box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 10)
         close_button = Gtk.Button.new_with_label(_("Close"))
@@ -100,31 +100,31 @@ class Converter(ChildTopWindow):
         self.open_folder_button.connect('released', self.open_in_fm)
 
         self.progress_box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        self.progress_box.pack_end(self.open_folder_button, False)
-        self.progress_box.pack_end(self.stop_button, False)
-        self.progress_box.pack_end(self.progressbar, True)
+        self.progress_box.pack_end(self.open_folder_button, False, False, 0)
+        self.progress_box.pack_end(self.stop_button, False, False, 0)
+        self.progress_box.pack_end(self.progressbar, True, True, 0)
 
         self.output = ScrolledText()
-        self.output.text.set_size_request(-1, 50)
-        self.output.scroll.set_size_request(-1, 50)
+        self.output.text.set_size_request(-1, 150)
+        self.output.scroll.set_size_request(-1, 150)
         self.output.scroll.set_placement(Gtk.CornerType.BOTTOM_LEFT)
-        vbox.pack_start(self.progress_box, False)
+        vbox.pack_start(self.progress_box, False, False, 0)
 
-        self.button_box.pack_end(self.convert_button, False)
-        self.button_box.pack_end(close_button, False)
+        self.button_box.pack_end(self.convert_button, False, False, 0)
+        self.button_box.pack_end(close_button, False, False, 0)
 
         self.button_box.show_all()
 
-        vbox.pack_start(self.button_box, False)
-        vbox.pack_start(self.output.scroll, False)
+        vbox.pack_start(self.button_box, False, False, 0)
+        vbox.pack_start(self.output.scroll, False, False, 0)
         self.add(vbox)
 
     def save(self, *a):
         chooser = Gtk.FileChooserDialog(title=_("Choose directory to save converted files"),
                                         action=Gtk.FileChooserAction.SELECT_FOLDER,
-                                        buttons=("document-save", Gtk.ResponseType.OK))
+                                        buttons=(_("Save"), Gtk.ResponseType.OK))
         chooser.set_current_folder(os.path.dirname(self.paths[0]))
-        chooser.set_icon_from_file(LOGO)
+        chooser.set_icon_name(LOGO)
         response = chooser.run()
 
         if response == Gtk.ResponseType.OK:
@@ -139,7 +139,7 @@ class Converter(ChildTopWindow):
                     else:
                         break
             self.stop = False
-            self.button_box.hide_all()
+            self.button_box.hide()
             self.progressbar.set_fraction(0)
             self.progress_box.show_all()
             self.output.scroll.show()
@@ -225,17 +225,18 @@ class Converter(ChildTopWindow):
                 self.area.buffer.insert_at_cursor(os.path.basename(path) + "\n")
 
     def warning(self):
-        dialog = Gtk.Dialog(_("Warning!!!"))
-        ok_button = dialog.add_button("dialog-ok", Gtk.ResponseType.OK) #@UnusedVariable
-        cancel_button = dialog.add_button("dialog-cancel", Gtk.ResponseType.CANCEL)
+        dialog = Gtk.Dialog.new()
+        dialog.set_title(_("Warning!!!"))
+        ok_button = dialog.add_button(_("OK"), Gtk.ResponseType.OK) #@UnusedVariable
+        cancel_button = dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         cancel_button.grab_default()
         label = Gtk.Label.new(_("So file(s)  already exist(s) and will be overwritten.\nDo you wish to continue?"))
         image = Gtk.Image.new_from_icon_name("dialog-warning", Gtk.IconSize.LARGE_TOOLBAR)
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 10)
-        hbox.pack_start(image)
-        hbox.pack_start(label)
-        dialog.vbox.pack_start(hbox)
-        dialog.set_icon_from_file(LOGO)
+        hbox.pack_start(image, False, False, 0)
+        hbox.pack_start(label, False, False, 0)
+        dialog.vbox.pack_start(hbox, False, False, 0)
+        dialog.set_icon_name(LOGO)
         dialog.set_default_size(210, 100)
         dialog.show_all()
         if dialog.run() == Gtk.ResponseType.OK:
@@ -332,7 +333,7 @@ def convert_files(paths):
             global converter
             converter = Converter()
         converter.show_all()
-        converter.progress_box.hide_all()
+        converter.progress_box.hide()
         converter.output.scroll.hide()
         converter.fill_form(paths)
         converter.format_combo.set_active(0)
@@ -350,7 +351,7 @@ def convert_files(paths):
         prog_bar = Gtk.ProgressBar()
         dialog.vbox.pack_start(area.scroll)
         dialog.vbox.pack_start(prog_bar, False)
-        dialog.set_icon_from_file(LOGO)
+        dialog.set_icon_name(LOGO)
         dialog.set_default_size(400, 150)
         dialog.show_all()
         prog_bar.hide()

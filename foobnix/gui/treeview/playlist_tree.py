@@ -26,6 +26,7 @@ from foobnix.util.converter import convert_files
 from foobnix.util.file_utils import open_in_filemanager, copy_to, get_files_from_gtk_selection_data,\
     get_file_extension, is_playlist
 from foobnix.util.id3_util import update_id3
+from foobnix.util.image_util import icon_exists
 from foobnix.util.key_utils import KEY_RETURN, is_key, KEY_DELETE, \
     is_modificator
 from foobnix.util.localization import foobnix_localization
@@ -268,7 +269,8 @@ class PlaylistTreeControl(CommonTreeControl):
 
                 if local_paths:
                     self.tree_menu.add_item(_('Edit Tags'), "accessories-text-editor", edit_tags, (self.controls, local_paths))
-                    self.tree_menu.add_item(_('Format Converter'), "emblem-synchronizing", convert_files, local_paths)
+                    converter_icon = "emblem-synchronizing" if icon_exists("emblem-synchronizing") else "gtk-convert"
+                    self.tree_menu.add_item(_('Format Converter'), converter_icon, convert_files, local_paths)
                 text = self.get_selected_bean().text
                 self.tree_menu.add_item(_('Copy To Search Line'), "system-search",
                                         self.controls.searchPanel.set_search_text, text)
