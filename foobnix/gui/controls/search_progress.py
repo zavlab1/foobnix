@@ -5,8 +5,12 @@ Created on 27 сент. 2010
 @author: ivan
 '''
 
-from gi.repository import Gtk
+import threading
+
+from gi.repository import GLib
 from gi.repository import Gdk
+from gi.repository import Gtk
+
 
 from foobnix.util import idle_task
 
@@ -23,24 +27,26 @@ class SearchProgress(Gtk.Spinner):
 
         self.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(255, 255, 255))
 
-    @idle_task
     def start(self, text=None):
         self.show()
         super(SearchProgress, self).start()
 
-    @idle_task
     def stop(self):
         super(SearchProgress, self).stop()
         self.hide()
 
     def background_spinner_wrapper(self, task, *args):
         self.start()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        try:
-            task(*args)
-        finally:
-            self.stop()
+        '''while Gtk.events_pending():
+            Gtk.main_iteration()'''
+        def do_task():
+            try:
+                task(*args)
+            finally:
+                GLib.idle_add(self.stop, priority=GLib.PRIORITY_LOW)
+
+        t = threading.Thread(target=do_task)
+        t.start()
 
     '''def background_spinner_wrapper(self, task, in_graphic_thread, *args):
         self.start()
