@@ -10,6 +10,7 @@ import logging
 import os.path
 import thread
 
+from foobnix.util.encoding import any2unicode
 from foobnix.util.id3_util import correct_encoding
 from foobnix.util.audio import get_mutagen_audio
 from foobnix.helpers.window import ChildTopWindow
@@ -266,7 +267,7 @@ class TagEditor(ChildTopWindow):
                 for audio, path in zip(self.audious, self.paths):
                     set_tags(audio, path, tag_name)
             else:
-                set_tags(self.audious[0], self.paths[0], tag_name)
+                set_tags(self.audious[0], self.paths[0], any2unicode(tag_name))
 
             check_button.set_active(False)
 

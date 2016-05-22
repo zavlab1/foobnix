@@ -177,7 +177,9 @@ class CueReader():
             file = open(self.cue_path, "r")
             data = file.read()
 
-        code = self.code_detecter(correct_encoding(data))
+        data = any2utf(correct_encoding(data))
+
+        #code = self.code_detecter(correct_encoding(data))
         data = data.replace('\r\n', '\n').split('\n')
         title = ""
         performer = ""
@@ -193,7 +195,7 @@ class CueReader():
             if not line:
                 continue
 
-            line = any2utf(line).strip()
+            line = line.strip()
 
             if not self.is_valid and not line.startswith(FILE):
                 continue

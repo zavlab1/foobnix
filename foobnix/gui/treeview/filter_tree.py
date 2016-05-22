@@ -7,6 +7,8 @@ Created on 7 нояб. 2010
 
 from foobnix.gui.model import FTreeModel
 from foobnix.gui.treeview.dragdrop_tree import DragDropTree
+from foobnix.util.encoding import unicode
+
 
 class FilterTreeControls(DragDropTree):
     def __init__(self, controls):
@@ -27,7 +29,7 @@ class FilterTreeControls(DragDropTree):
 
         for child in parent.iterchildren():
 
-            column_text = child[column_num].decode().lower().strip()
+            column_text = unicode(child[column_num], 'utf-8').lower().strip()
 
             if not child[self.is_file[0]]:
                 """folder"""
@@ -51,7 +53,7 @@ class FilterTreeControls(DragDropTree):
 
         for child in parent.iterchildren():
 
-            column_text = child[column_num].decode().lower().strip()
+            column_text = unicode(child[column_num], 'utf-8').lower().strip()
 
             if not child[self.is_file[0]]:
                 if query in column_text:
@@ -70,7 +72,7 @@ class FilterTreeControls(DragDropTree):
     def file_filter(self, query, column_num):
         for parent in self.model:
             if parent[self.is_file[0]]:
-                column_text = parent[column_num].decode().lower().strip()
+                column_text = unicode(parent[column_num], 'utf-8').lower().strip()
                 if query not in column_text:
                     parent[self.visible[0]] = False
             else:
@@ -79,7 +81,7 @@ class FilterTreeControls(DragDropTree):
     def folder_filter(self, query, column_num):
         for parent in self.model:
             if not parent[self.is_file[0]]:
-                column_text = parent[column_num].decode().lower().strip()
+                column_text = unicode(parent[column_num], 'utf-8').lower().strip()
                 if query not in column_text:
                     self.is_query_in_folder_line(query, parent, column_num)
 
@@ -87,7 +89,7 @@ class FilterTreeControls(DragDropTree):
         self.show_all_lines()
 
         if query and len(query.strip()) > 0:
-            query = query.decode().strip().lower()
+            query = unicode(query, 'utf-8').strip().lower()
             self.file_filter(query, column_num)
             self.expand_all()
         else:
@@ -97,7 +99,7 @@ class FilterTreeControls(DragDropTree):
         self.show_all_lines()
 
         if query and len(query.strip()) > 0:
-            query = query.decode().strip().lower()
+            query = unicode(query).strip().lower()
             self.folder_filter(query, column_num)
             if expand:
                 self.expand_all()

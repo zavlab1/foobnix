@@ -8,6 +8,7 @@ import logging
 import os.path
 
 from foobnix.gui.model import FModel
+from foobnix.util.encoding import any2unicode, any2utf
 from foobnix.util.file_utils import get_file_extension
 
 
@@ -15,7 +16,7 @@ class M3UReader:
     def __init__(self, path):
         self.path = path
         try:
-            self.m3u = open(unicode(path))
+            self.m3u = open(any2unicode(path))
         except Exception as e:
             logging.error(str(e))
             self.m3u = None
@@ -34,8 +35,10 @@ class M3UReader:
         try:
             if not self.m3u:
                 return
-            lines = self.m3u.readlines()
-            paths = [os.path.normpath(line).strip('\r\n') for line in lines
+            data = any2utf(self.m3u.read())
+            data = data.replace('\r\n', '\n').lstrip('\xef\xbb\xbf').split('\n')
+
+            paths = [os.path.normpath(line).strip('\r\n').strip() for line in data
                      if line.startswith("##") or not line.startswith("#")]
             dirname = os.path.dirname(self.path)
 
