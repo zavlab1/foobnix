@@ -7,7 +7,6 @@ Created on 7 нояб. 2010
 
 from foobnix.gui.model import FTreeModel
 from foobnix.gui.treeview.dragdrop_tree import DragDropTree
-from foobnix.util.encoding import unicode
 
 
 class FilterTreeControls(DragDropTree):
