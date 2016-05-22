@@ -17,6 +17,7 @@ from foobnix.fc.fc import FC
 from foobnix.gui.model import FModel
 from foobnix.util import file_utils
 from foobnix.util.audio import get_mutagen_audio
+from foobnix.util.encoding import any2utf
 from foobnix.util.image_util import get_image_by_path
 from foobnix.util.time_utils import convert_seconds_to_text
 from foobnix.util.file_utils import get_any_supported_audio_file
@@ -192,13 +193,7 @@ class CueReader():
             if not line:
                 continue
 
-            if isinstance(line, str):
-                try:
-                    line = unicode(line, code)
-                except:
-                    logging.error("There is some problems while converting in unicode")
-
-            line = line.strip().encode('utf-8')
+            line = any2utf(line).strip()
 
             if not self.is_valid and not line.startswith(FILE):
                 continue

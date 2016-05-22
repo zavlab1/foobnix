@@ -5,18 +5,18 @@ Created on 27 окт. 2010
 @author: ivan
 '''
 
-import os
-from gi.repository import Gtk
-import time
 import logging
+import os
 import threading
+import time
+from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
-from foobnix.util.key_utils import is_key
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util.const import ICON_FOOBNIX
-from foobnix.util.text_utils import split_string
 from foobnix.util.file_utils import get_full_size
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+from foobnix.util.key_utils import is_key
+from foobnix.util.text_utils import split_string
 
 
 class ChildTopWindow(Gtk.Window):

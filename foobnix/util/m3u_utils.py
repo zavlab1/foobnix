@@ -1,10 +1,9 @@
 #-*- coding: utf-8 -*-
 
 import logging
-
 from gi.repository import Gtk
 
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util.const import ICON_FOOBNIX
 from foobnix.util.file_utils import get_file_extension
 

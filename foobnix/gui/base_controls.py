@@ -7,8 +7,8 @@ Created on 25 сент. 2010
 
 import copy
 import gi
-import os
 import logging
+import os
 import thread
 import time
 
@@ -24,8 +24,8 @@ from foobnix.fc.fc import FC
 from foobnix.fc.fc_base import FCBase
 from foobnix.fc.fc_cache import FCache
 from foobnix.gui.model import FModel
-from foobnix.gui.service.music_service import get_all_music_by_paths
-from foobnix.gui.service.vk_service import VKService
+from foobnix.service.music_service import get_all_music_by_paths
+from foobnix.service.vk_service import VKService
 from foobnix.gui.state import LoadSave, Quitable
 from foobnix.helpers.dialog_entry import file_chooser_dialog, \
     directory_chooser_dialog, info_dialog_with_link_and_donate

@@ -5,16 +5,16 @@ Created on 28 сент. 2010
 @author: anton.komolov
 '''
 
-import logging
 import dbus.service
+import logging
+from dbus.mainloop.glib import DBusGMainLoop
 
 from foobnix.fc.fc import FC
-from foobnix.util import idle_task
-from foobnix.version import FOOBNIX_VERSION
-from dbus.mainloop.glib import DBusGMainLoop
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.thirdparty.sound_menu import SoundMenuControls
+from foobnix.util import idle_task
 from foobnix.util.const import STATE_PLAY, ICON_FOOBNIX
+from foobnix.version import FOOBNIX_VERSION
 
 DBusGMainLoop(set_as_default=True)
 

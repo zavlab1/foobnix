@@ -6,7 +6,6 @@ Created on 29 сент. 2010
 '''
 
 import logging
-
 from gi.repository import Gdk
 from gi.repository import Gtk
 from gi.repository import Notify
@@ -15,11 +14,11 @@ from foobnix.fc.fc import FC
 from foobnix.gui.controls.playback import PlaybackControls
 from foobnix.gui.model import FModel
 from foobnix.gui.model.signal import FControl
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.gui.state import LoadSave
 from foobnix.helpers.image import ImageBase
 from foobnix.helpers.my_widgets import ImageButton, AlternateVolumeControl
 from foobnix.helpers.pref_widgets import VBoxDecorator
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util import idle_task
 from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_NAME
 from foobnix.util.mouse_utils import is_middle_click

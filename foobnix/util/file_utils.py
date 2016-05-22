@@ -4,21 +4,20 @@ Created on Feb 26, 2010
 @author: ivan
 '''
 
-from gi.repository import Gtk
-
 import logging
 import os
-import sys
 import shutil
 import subprocess
+import sys
 import thread
 import threading
 import urllib
+from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.helpers.dialog_entry import directory_chooser_dialog
 from foobnix.helpers.textarea import ScrolledText
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util.const import ICON_FOOBNIX
 
 

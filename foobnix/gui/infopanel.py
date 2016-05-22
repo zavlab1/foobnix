@@ -3,31 +3,30 @@ Created on Sep 23, 2010
 
 @author: ivan
 '''
-import os
+
 import copy
 import logging
+import os
 import threading
 
-from gi.repository import Gtk
 from gi.repository import GLib
+from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
+from foobnix.fc.fc_cache import FCache, COVERS_DIR, LYRICS_DIR
 from foobnix.gui.model import FModel
-from foobnix.gui.state import LoadSave
-from foobnix.helpers.image import ImageBase
-from foobnix.helpers.textarea import TextArea
 from foobnix.gui.model.signal import FControl
+from foobnix.gui.state import LoadSave
+from foobnix.gui.treeview.simple_tree import SimpleTreeControl
+from foobnix.helpers.image import ImageBase
 from foobnix.helpers.my_widgets import EventLabel
 from foobnix.helpers.pref_widgets import HBoxDecoratorTrue, FrameDecorator
-from foobnix.fc.fc_cache import FCache, COVERS_DIR, LYRICS_DIR
-from foobnix.gui.treeview.simple_tree import SimpleTreeControl
-from foobnix.util import idle_task
-from foobnix.util.const import FTYPE_NOT_UPDATE_INFO_PANEL, \
-    ICON_BLANK_DISK_PATH, SITE_LOCALE
-from foobnix.util.bean_utils import update_parent_for_beans, \
-    update_bean_from_normalized_text
+from foobnix.helpers.textarea import TextArea
+from foobnix.service.lyrics_parsing_service import get_lyrics_by_parsing
 from foobnix.thirdparty.lyr import get_lyrics
-from foobnix.gui.service.lyrics_parsing_service import get_lyrics_by_parsing
+from foobnix.util import idle_task
+from foobnix.util.bean_utils import update_parent_for_beans, update_bean_from_normalized_text
+from foobnix.util.const import FTYPE_NOT_UPDATE_INFO_PANEL, ICON_BLANK_DISK_PATH, SITE_LOCALE
 from foobnix.util.id3_util import get_image_for_bean
 
 

@@ -32,6 +32,9 @@ import warnings
 import re
 import six
 
+from foobnix.util.encoding import any2unicode
+
+
 __version__ = '1.5.1'
 __author__ = 'Amr Hassan, hugovk'
 __copyright__ = "Copyright (C) 2008-2010 Amr Hassan, 2013-2016 hugovk"
@@ -1740,7 +1743,7 @@ class _Opus(_BaseObject, _Taggable):
     @_string_output
     def __str__(self):
         return _unicode("%s - %s") % (
-            self.get_artist().get_name(), self.get_title())
+            any2unicode(self.get_artist().get_name()), any2unicode(self.get_title()))
 
     def __eq__(self, other):
         if type(self) != type(other):

@@ -5,17 +5,17 @@ Created on 31 may 2011
 @author: zavlab1
 '''
 
-import time
 import base64
+import logging
 import socket
 import thread
-import logging
+import time
 
 from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
 from foobnix.helpers.window import MessageWindow
-from foobnix.gui.service.lastfm_service import LastFmService
+from foobnix.service.lastfm_service import LastFmService
 from foobnix.util import idle_task
 
 

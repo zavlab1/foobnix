@@ -5,17 +5,17 @@ Created on 1 сент. 2010
 @author: ivan
 '''
 
-import time
 import logging
+import time
 import urllib2
 
 from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
-from foobnix.preferences.config_plugin import ConfigPlugin
-from foobnix.util.proxy_connect import set_proxy_settings
-from foobnix.gui.service.lastfm_service import LastFmService
 from foobnix.helpers.pref_widgets import FrameDecorator
+from foobnix.preferences.config_plugin import ConfigPlugin
+from foobnix.service.lastfm_service import LastFmService
+from foobnix.util.proxy_connect import set_proxy_settings
 
 
 class NetworkConfig(ConfigPlugin):
@@ -133,7 +133,7 @@ class NetworkConfig(ConfigPlugin):
 
         self.widget = box
 
-        if  FC().proxy_enable and FC().proxy_url:
+        if FC().proxy_enable and FC().proxy_url:
             set_proxy_settings()
 
 

@@ -8,6 +8,8 @@ Created on 20 February 2010
 import os
 import shutil
 import threading
+
+from foobnix.util.encoding import any2utf
 from foobnix.util.singleton import Singleton
 from foobnix.fc.fc_helper import CONFIG_DIR, CACHE_DIR, FCStates
 
@@ -70,9 +72,8 @@ class FCache:
     def on_quit(self):
 
         def write_string(file, string):
-            if isinstance(string, str):
-                string = unicode(string, "utf-8")
-            file.write((u'#' + u'#' + u'\n' + string + u'\n').encode('utf-8'))
+            string = any2utf(string).strip()
+            file.write('##\n' + string + '\n')
 
         if not os.path.isdir(COVERS_DIR):
             os.mkdir(COVERS_DIR)

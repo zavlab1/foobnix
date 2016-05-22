@@ -4,16 +4,18 @@ Created on 25 сент. 2010
 
 @author: ivan
 '''
-import os
-from gi.repository import Gtk
+
 import logging
+import os
+
+from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
 from foobnix.gui.model import FModel
 from foobnix.helpers.window import ChildTopWindow
 from foobnix.util.file_utils import file_extension, get_file_extension
-from foobnix.util.list_utils import sort_by_song_name
 from foobnix.util.id3_file import update_id3_wind_filtering
+from foobnix.util.list_utils import sort_by_song_name
 
 
 def get_all_music_by_paths(paths, controls):

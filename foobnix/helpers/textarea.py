@@ -9,6 +9,7 @@ from gi.repository import Gtk
 
 from foobnix.helpers.image import ImageBase
 from foobnix.util import idle_task
+from foobnix.util.encoding import any2unicode
 
 
 class TextArea(Gtk.ScrolledWindow):
@@ -56,8 +57,7 @@ class TextArea(Gtk.ScrolledWindow):
         if text:
             self.clear_tags(full_text)
         start = self.buffer.get_iter_at_offset(0)
-        if isinstance(bold_text, str):
-            bold_text = unicode(bold_text, "utf-8")
+        bold_text = any2unicode(bold_text, 'utf-8')
         end = self.buffer.get_iter_at_offset(len(bold_text))
         self.buffer.apply_tag(self.tag_bold, start, end)
 

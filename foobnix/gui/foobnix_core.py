@@ -3,14 +3,13 @@
 import logging
 import os
 import sys
-
 from gi.repository import Gtk
 
 from foobnix.dm.dm import DM
 from foobnix.eq.eq_controller import EqController
 from foobnix.fc.fc import FC
-from foobnix.gui.base_layout import BaseFoobnixLayout
 from foobnix.gui.base_controls import BaseFoobnixControls
+from foobnix.gui.base_layout import BaseFoobnixLayout
 from foobnix.gui.controls.playback import PlaybackControls, \
                                           OrderShuffleControls
 from foobnix.gui.controls.record import RadioRecord
@@ -30,14 +29,13 @@ from foobnix.gui.perspectives.radio import RadioPerspective
 from foobnix.gui.perspectives.storage import StoragePerspective
 from foobnix.gui.perspectives.vk import VKPerspective
 from foobnix.gui.search import SearchControls
-from foobnix.gui.service.lastfm_service import LastFmService
 from foobnix.gui.top import TopWidgets
 from foobnix.gui.window import MainWindow
 from foobnix.preferences.preferences_window import PreferencesWindow
+from foobnix.service.lastfm_service import LastFmService
 from foobnix.util.localization import foobnix_localization
 from foobnix.util.net_wrapper import NetWrapper
 from foobnix.util.single_thread import SingleThread
-
 
 foobnix_localization()
 

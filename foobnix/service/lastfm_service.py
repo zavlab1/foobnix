@@ -15,6 +15,7 @@ from foobnix.fc.fc_base import FCBase
 from foobnix.gui.model import FModel
 from foobnix.thirdparty.pylast import WSError, Tag
 from foobnix.thirdparty import pylast
+from foobnix.util.encoding import any2utf
 
 API_KEY = FCBase().API_KEY
 API_SECRET = FCBase().API_SECRET
@@ -197,9 +198,9 @@ class LastFmService():
         def task(bean):
             if bean.artist and bean.title:
                 try:
-                    bean.artist, bean.title = bean.artist.encode("utf-8"), bean.title.encode("utf-8")
+                    bean.artist, bean.title = any2utf(bean.artist), any2utf(bean.title)
                     if bean.album:
-                        bean.album = bean.album.encode("utf-8")
+                        bean.album = any2utf(bean.album)
                     self.get_scrobbler().scrobble(bean.artist, bean.title, start_time, "P", "", int(duration_sec), bean.album or "")
                     logging.debug("Song Scrobbled " + str(bean.artist) + " " + str(bean.title) + " " + str(start_time) + " P: " + str(int(duration_sec)))
                 except Exception, e:

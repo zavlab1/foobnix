@@ -6,10 +6,9 @@ Created on Sep 28, 2010
 
 import logging
 import os
-
 from gi.repository import Gtk
 
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util import idle_task
 from foobnix.util.const import ICON_FOOBNIX
 from foobnix.util.pix_buffer import create_pixbuf_from_url, create_pixbuf_from_path

@@ -8,13 +8,13 @@ Created on 24 авг. 2010
 from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
-from foobnix.util import const
-from foobnix.preferences.config_plugin import ConfigPlugin
 from foobnix.helpers.image import ImageBase
-from foobnix.util.const import ICON_BLANK_DISK_PATH
-from foobnix.gui.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.helpers.pref_widgets import FrameDecorator, VBoxDecorator, ChooseDecorator, \
     IconBlock
+from foobnix.preferences.config_plugin import ConfigPlugin
+from foobnix.service.path_service import get_foobnix_resourse_path_by_name
+from foobnix.util import const
+from foobnix.util.const import ICON_BLANK_DISK_PATH
 
 
 class TrayIconConfig(ConfigPlugin):

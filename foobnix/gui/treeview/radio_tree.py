@@ -13,16 +13,16 @@ import thread
 from gi.repository import Gtk
 
 from foobnix.fc.fc_cache import FCache, CACHE_RADIO_FILE
+from foobnix.gui.model import FModel, FTreeModel
+from foobnix.gui.treeview.common_tree import CommonTreeControl
 from foobnix.helpers.dialog_entry import two_line_dialog, one_line_dialog
 from foobnix.helpers.menu import Popup
-from foobnix.gui.model import FModel, FTreeModel
-from foobnix.gui.service.radio_service import RadioFolder
-from foobnix.gui.treeview.common_tree import CommonTreeControl
+from foobnix.service.radio_service import RadioFolder
 from foobnix.util import idle_task
 from foobnix.util.const import FTYPE_RADIO
+from foobnix.util.key_utils import is_key, KEY_DELETE
 from foobnix.util.mouse_utils import is_double_left_click, is_rigth_click,\
     right_click_optimization_for_trees, is_empty_click
-from foobnix.util.key_utils import is_key, KEY_DELETE
 
 
 class RadioTreeControl(CommonTreeControl):
