@@ -12,13 +12,13 @@ import sys
 import thread
 import threading
 import urllib
+
 from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
 from foobnix.helpers.dialog_entry import directory_chooser_dialog
 from foobnix.helpers.textarea import ScrolledText
-from foobnix.service.path_service import get_foobnix_resourse_path_by_name
-from foobnix.util.const import ICON_FOOBNIX
+from foobnix.util.const import ICON_FOOBNIX_NAME
 
 
 def open_in_filemanager(path, managers=None):
@@ -54,7 +54,7 @@ def rename_file_on_disk(row, index_path, index_text):
         title = _('Rename file')
     dialog = Gtk.Dialog(title, buttons=("Rename", Gtk.ResponseType.ACCEPT, "Cancel", Gtk.ResponseType.REJECT))
     dialog.vbox.pack_start(hbox)
-    dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    dialog.set_icon_name(ICON_FOOBNIX_NAME)
     dialog.show_all()
     if dialog.run() == Gtk.ResponseType.ACCEPT:
         if os.path.isdir(path) or not entry_ext.get_text():
@@ -78,7 +78,7 @@ def delete_files_from_disk(row_refs, paths, get_iter_from_row_reference):
     dialog.set_default_size(500, 200)
     dialog.set_border_width(5)
     dialog.vbox.pack_start(label)
-    dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    dialog.set_icon_name(ICON_FOOBNIX_NAME)
     buffer = Gtk.TextBuffer()
     text = Gtk.TextView(buffer=buffer)
     text.set_editable(False)
@@ -138,7 +138,7 @@ def copy_move_files_dialog(files, dest_folder, copy=None):
     dialog.vbox.pack_start(area.scroll)
     dialog.set_border_width(5)
     dialog.vbox.pack_start(label)
-    dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    dialog.set_icon_name(ICON_FOOBNIX_NAME)
     dialog.set_default_size(400, 150)
     dialog.show_all()
     if dialog.run() == Gtk.ResponseType.OK:

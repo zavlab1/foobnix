@@ -1,10 +1,10 @@
 #-*- coding: utf-8 -*-
 
 import logging
+
 from gi.repository import Gtk
 
-from foobnix.service.path_service import get_foobnix_resourse_path_by_name
-from foobnix.util.const import ICON_FOOBNIX
+from foobnix.util.const import ICON_FOOBNIX_NAME
 from foobnix.util.file_utils import get_file_extension
 
 
@@ -40,7 +40,7 @@ def message_on_save(absolute=True):
     dialog = Gtk.Dialog(buttons=("Yes", Gtk.ResponseType.OK, "No", Gtk.ResponseType.REJECT))
     dialog.set_title(_("Choose window"))
     dialog.set_border_width(5)
-    dialog.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+    dialog.set_icon_name(ICON_FOOBNIX_NAME)
     label = Gtk.Label.new(None)
     label.set_markup(_("""<big><b>\t\t\t\t\t\t\t\tAttention!\n</b></big>\t\
 The relative location of the \

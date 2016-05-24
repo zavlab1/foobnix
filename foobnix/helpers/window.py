@@ -9,11 +9,12 @@ import logging
 import os
 import threading
 import time
+
 from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
 from foobnix.service.path_service import get_foobnix_resourse_path_by_name
-from foobnix.util.const import ICON_FOOBNIX
+from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_NAME
 from foobnix.util.file_utils import get_full_size
 from foobnix.util.key_utils import is_key
 from foobnix.util.text_utils import split_string
@@ -63,7 +64,7 @@ class CopyProgressWindow(Gtk.Dialog):
         if width and hight:
             self.set_default_size(width, hight)
 
-        self.set_icon_from_file(get_foobnix_resourse_path_by_name(ICON_FOOBNIX))
+        self.set_icon_name(ICON_FOOBNIX_NAME)
         self.set_resizable(True)
         self.set_border_width(5)
         self.total_size = get_full_size(file_list)
