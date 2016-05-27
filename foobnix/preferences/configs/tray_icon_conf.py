@@ -9,8 +9,10 @@ from gi.repository import Gtk
 
 from foobnix.fc.fc import FC
 from foobnix.helpers.image import ImageBase
-from foobnix.helpers.pref_widgets import FrameDecorator, VBoxDecorator, ChooseDecorator, \
-    IconBlock
+from foobnix.helpers.pref_widgets import FrameDecorator  \
+                                       , VBoxDecorator   \
+                                       , ChooseDecorator \
+                                       , IconBlock
 from foobnix.preferences.config_plugin import ConfigPlugin
 from foobnix.service.path_service import get_foobnix_resourse_path_by_name
 from foobnix.util import const
@@ -27,13 +29,13 @@ class TrayIconConfig(ConfigPlugin):
         box.hide()
 
         '''static_icon'''
-        self.static_icon = IconBlock(_("Icon"), controls, FC().static_icon_entry)
+        self.static_icon = IconBlock(_("Icon"), controls, FC().static_icon_entry, FC().playback_icons['app'])
 
         """dynamic icons"""
-        self.play_icon = IconBlock(_("Play"), controls, FC().play_icon_entry)
-        self.pause_icon = IconBlock(_("Pause"), controls, FC().pause_icon_entry)
-        self.stop_icon = IconBlock(_("Stop"), controls, FC().stop_icon_entry)
-        self.radio_icon = IconBlock(_("Radio"), controls, FC().radio_icon_entry)
+        self.play_icon  = IconBlock(_("Play"),  controls, FC().play_icon_entry,  FC().playback_icons['play'])
+        self.pause_icon = IconBlock(_("Pause"), controls, FC().pause_icon_entry, FC().playback_icons['pause'])
+        self.stop_icon  = IconBlock(_("Stop"),  controls, FC().stop_icon_entry,  FC().playback_icons['stop'])
+        self.radio_icon = IconBlock(_("Radio"), controls, FC().radio_icon_entry, FC().playback_icons['radio'])
 
         self.hide_in_tray_on_start = Gtk.CheckButton.new_with_label(_("Hide player in tray on start"))
         self.tray_icon_button = Gtk.CheckButton.new_with_label(_("Show tray icon"))
@@ -193,7 +195,10 @@ class TrayIconConfig(ConfigPlugin):
         FC().radio_icon_entry = self.radio_icon.entry.get_text()
         FC().notify_time = int(self.adjustment.get_value() * 1000)
 
-        if IconBlock.temp_list != FC().all_icons:
-            FC().all_icons = IconBlock.temp_list
+        self.static_icon.save()
+        self.play_icon.save()
+        self.pause_icon.save()
+        self.stop_icon.save()
+        self.radio_icon.save()
 
         self.on_show_tray_icon()

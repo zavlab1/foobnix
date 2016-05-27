@@ -4,9 +4,12 @@ Created on 30 авг. 2010
 
 @author: ivan
 '''
-from foobnix.util.localization import foobnix_localization
+
 import locale
+
 from gi.repository import Gtk
+
+from foobnix.util.localization import foobnix_localization
 
 foobnix_localization()
 
@@ -57,14 +60,25 @@ ICON_FOOBNIX_PLAY_NAME = "foobnix-play"
 ICON_FOOBNIX_PAUSE_NAME = "foobnix-pause"
 ICON_FOOBNIX_STOP_NAME = "foobnix-stop"
 ICON_FOOBNIX_RADIO_NAME = "foobnix-radio"
-ICON_BLANK_DISK_NAME = "foobnix-blank-disc"
+
+ICON_FOOBNIX_PLAY_ALT_NAME = "foobnix-play-alt"
+ICON_FOOBNIX_PAUSE_ALT_NAME = "foobnix-pause-alt"
+ICON_FOOBNIX_STOP_ALT_NAME = "foobnix-stop-alt"
+ICON_FOOBNIX_RADIO_ALT_NAME = "foobnix-radio-alt"
+
+ICON_BLANK_DISK_ALT_NAME = "foobnix-blank-disc"
 
 ICON_FOOBNIX = "icons/hicolor/scalable/apps/foobnix.svg"
 
-ICON_FOOBNIX_PLAY = "icons/hicolor/scalable/actions/foobnix-play.svg"
+ICON_FOOBNIX_PLAY  = "icons/hicolor/scalable/apps/foobnix.svg"
 ICON_FOOBNIX_PAUSE = "icons/hicolor/scalable/actions/foobnix-pause.svg"
-ICON_FOOBNIX_STOP = "icons/hicolor/scalable/actions/foobnix-stop.svg"
+ICON_FOOBNIX_STOP  = "icons/hicolor/scalable/actions/foobnix-stop.svg"
 ICON_FOOBNIX_RADIO = "icons/hicolor/scalable/actions/foobnix-radio.svg"
+
+ICON_FOOBNIX_PLAY_ALT  = "icons/hicolor/scalable/actions/foobnix-play-alternate.svg"
+ICON_FOOBNIX_PAUSE_ALT = "icons/hicolor/scalable/actions/foobnix-pause-alternate.svg"
+ICON_FOOBNIX_STOP_ALT  = "icons/hicolor/scalable/actions/foobnix-stop-alternate.svg"
+
 ICON_BLANK_DISK_PATH = "images/foobnix-blank-disc.jpg"
 
 BEFORE = Gtk.TreeViewDropPosition.BEFORE

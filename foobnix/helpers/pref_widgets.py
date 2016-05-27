@@ -5,8 +5,8 @@ Created on Nov 5, 2010
 '''
 
 import logging
-from gi._signalhelper import Signal
 
+from gi._signalhelper import Signal
 from gi.repository import GObject
 from gi.repository import Gtk
 
@@ -14,16 +14,21 @@ from foobnix.fc.fc import FC
 from foobnix.helpers.dialog_entry import file_chooser_dialog
 from foobnix.helpers.my_widgets import ButtonIconText
 from foobnix.helpers.window import ChildTopWindow
-from foobnix.util.const import ICON_FOOBNIX, ICON_FOOBNIX_PLAY, ICON_FOOBNIX_PAUSE, \
-    ICON_FOOBNIX_STOP, ICON_FOOBNIX_RADIO
+from foobnix.util.const import ICON_FOOBNIX           \
+                             , ICON_FOOBNIX_PLAY      \
+                             , ICON_FOOBNIX_PAUSE     \
+                             , ICON_FOOBNIX_STOP      \
+                             , ICON_FOOBNIX_RADIO     \
+                             , ICON_FOOBNIX_PLAY_ALT  \
+                             , ICON_FOOBNIX_PAUSE_ALT \
+                             , ICON_FOOBNIX_STOP_ALT
+
 from foobnix.util.pix_buffer import create_pixbuf_from_path
 
 
 class IconBlock(Gtk.Box):
 
-    temp_list = FC().all_icons[:]
-
-    def __init__(self, text, controls, filename, all_icons=temp_list):
+    def __init__(self, text, controls, filename, all_icons):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
 
         self.controls = controls
@@ -37,11 +42,22 @@ class IconBlock(Gtk.Box):
         else:
             filename = ""
 
-        self.all_icons = all_icons
+        self.orig_list = all_icons
 
-        self.modconst = ModelConstructor(all_icons)
+        self.all_icons = all_icons[:]
+
+        self.modconst = ModelConstructor(self.all_icons)
 
         self.combobox.set_model(self.modconst.model)
+
+        self.choose_button = ButtonIconText(_("Choose"), "folder-open")
+        self.delete_button = ButtonIconText(_("Delete"), "edit-delete")
+
+        self.choose_button.set_property("always-show-image", True)
+        self.delete_button.set_property("always-show-image", True)
+
+        self.choose_button.connect("clicked", self.on_file_choose)
+        self.delete_button.connect("clicked", self.on_delete)
 
         if filename in self.all_icons:
             self.combobox.set_active(self.all_icons.index(filename))
@@ -51,28 +67,22 @@ class IconBlock(Gtk.Box):
             logging.warning("Icon " + filename + " is absent in list of icons")
 
         pix_render = Gtk.CellRendererPixbuf()
+
         self.combobox.pack_start(pix_render, 0)
         self.combobox.add_attribute(pix_render, 'pixbuf', 0)
-
-        button_1 = ButtonIconText(_("Choose"), "folder-open")
-        button_1.set_property("always-show-image", True)
-        button_1.connect("clicked", self.on_file_choose)
-
-        button_2 = ButtonIconText(_("Delete"), "edit-delete")
-        button_2.set_property("always-show-image", True)
-        button_2.connect("clicked", self.on_delete)
 
         label = Gtk.Label.new(text)
         if text: # if iconblock without label
             label.set_size_request(80, -1)
 
-        self.pack_start(label, False, False, 0)
+        self.pack_start(label,         False, False, 0)
         self.pack_start(self.combobox, False, False, 0)
-        self.pack_start(self.entry, True, True, 0)
-        self.pack_start(button_1, False, False, 0)
-        self.pack_start(button_2, False, False, 0)
+        self.pack_start(self.entry,    True,  True,  0)
+        self.pack_start(self.choose_button,      False, False, 0)
+        self.pack_start(self.delete_button,      False, False, 0)
 
         self.combobox.connect("changed", self.on_change_icon)
+        self.on_change_icon()
 
     def on_file_choose(self, *a):
         file = file_chooser_dialog("Choose icon")
@@ -84,11 +94,14 @@ class IconBlock(Gtk.Box):
 
     def on_change_icon(self, *a):
         active_id = self.combobox.get_active()
+        icon_name = ""
         if active_id >= 0:
             icon_name = self.combobox.get_model()[active_id][1]
             self.entry.set_text(icon_name)
-        #FC().static_tray_icon = True
-        #self.controls.trayicon.on_dynamic_icons(None)
+        if not (icon_name.startswith('/') or icon_name.startswith(':', 1)):
+            self.delete_button.set_sensitive(False)
+        else:
+            self.delete_button.set_sensitive(True)
 
     def get_active_path(self):
         active_id = self.combobox.get_active()
@@ -110,6 +123,13 @@ class IconBlock(Gtk.Box):
                 error_window.show()
         except ValueError, e:
             logging.error("There is not such icon in the list" + str(e))
+
+    def save(self):
+        #recvord to FC
+        if self.orig_list != self.all_icons:
+            del self.orig_list[:] #clear list
+            for icon in self.all_icons:
+                self.orig_list.append(icon)
 
 class FrameDecorator(Gtk.Frame):
     def __init__(self, text, widget, x_align=0.0, y_align=0.5, border_width=None):
@@ -198,11 +218,14 @@ class ModelConstructor():
                           ICON_FOOBNIX_PAUSE,
                           ICON_FOOBNIX_STOP,
                           ICON_FOOBNIX_RADIO,
+                          ICON_FOOBNIX_PLAY_ALT,
+                          ICON_FOOBNIX_PAUSE_ALT,
+                          ICON_FOOBNIX_STOP_ALT,
                           "images/foobnix-tux.gif"]
         self.model.clear()
         for icon_path in self.all_icons:
             self.append_icon(None, icon_path)
-        FC().all_icons = self.all_icons[:]
+
         logging.info("Icons have been reset to default")
 
     def delete_icon(self, iter):
