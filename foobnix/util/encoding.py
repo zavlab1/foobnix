@@ -16,6 +16,8 @@ def any2unicode(data, code=None):
     return data
 
 def any2utf(data, code=None):
+    if not data:
+        return ""
     data = any2unicode(data, code)
     return data.encode('utf-8')
 

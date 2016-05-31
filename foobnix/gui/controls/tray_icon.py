@@ -112,8 +112,12 @@ class TrayIconControls(Gtk.StatusIcon, FControl, LoadSave):
 
     @idle_task
     def set_from_file(self, path):
-        path = get_foobnix_resourse_path_by_name(path)
-        super(TrayIconControls, self).set_from_file(path)
+        try:
+            path = get_foobnix_resourse_path_by_name(path)
+            super(TrayIconControls, self).set_from_file(path)
+        except TypeError as e:
+            logging.error("Try to load default icon")
+            self.set_from_icon_name(ICON_FOOBNIX_NAME)
 
     def on_save(self):
         pass

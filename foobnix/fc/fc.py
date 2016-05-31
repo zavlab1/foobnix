@@ -13,14 +13,23 @@ from foobnix.fc.fc_cache import FCache
 from foobnix.util.singleton import Singleton
 from foobnix.util.agent import get_ranmom_agent
 from foobnix.fc.fc_helper import FCStates, CONFIG_DIR
-from foobnix.util.const import ICON_FOOBNIX           \
-                             , ICON_FOOBNIX_PLAY      \
-                             , ICON_FOOBNIX_PAUSE     \
-                             , ICON_FOOBNIX_STOP      \
-                             , ICON_FOOBNIX_RADIO     \
-                             , ICON_FOOBNIX_PLAY_ALT  \
-                             , ICON_FOOBNIX_PAUSE_ALT \
-                             , ICON_FOOBNIX_STOP_ALT
+from foobnix.util.const import ICON_FOOBNIX                   \
+                             , ICON_FOOBNIX_ALT               \
+                             , ICON_FOOBNIX_SYMBOLIC          \
+                             , ICON_FOOBNIX_PLAY              \
+                             , ICON_FOOBNIX_PAUSE             \
+                             , ICON_FOOBNIX_STOP              \
+                             , ICON_FOOBNIX_RADIO             \
+                             , ICON_FOOBNIX_PLAY_ALT          \
+                             , ICON_FOOBNIX_PAUSE_ALT         \
+                             , ICON_FOOBNIX_STOP_ALT          \
+                             , ICON_FOOBNIX_PLAY_SYMBOLIC     \
+                             , ICON_FOOBNIX_PAUSE_SYMBOLIC    \
+                             , ICON_FOOBNIX_STOP_SYMBOLIC     \
+                             , ICON_FOOBNIX_PLAY_ALT_SYMBOLIC \
+                             , ICON_FOOBNIX_PAUSE_ALT_SYMBOLIC\
+                             , ICON_FOOBNIX_STOP_ALT_SYMBOLIC \
+                             , ICON_FOOBNIX_RADIO_SYMBOLIC
 
 CONFIG_FILE = os.path.join(CONFIG_DIR , "foobnix.pkl")
 
@@ -122,11 +131,13 @@ class FC():
         self.system_icons_dinamic = False
         self.change_tray_icon = False
 
-        self.playback_icons = {'app'  : [ICON_FOOBNIX,     "images/foobnix-tux.gif"],
-                      'play' : [ICON_FOOBNIX_PLAY , ICON_FOOBNIX_PLAY_ALT ],
-                      'pause': [ICON_FOOBNIX_PAUSE, ICON_FOOBNIX_PAUSE_ALT],
-                      'stop' : [ICON_FOOBNIX_STOP , ICON_FOOBNIX_STOP_ALT ],
-                      'radio': [ICON_FOOBNIX_RADIO]}
+        self.playback_icons = {
+            'app'  : [ICON_FOOBNIX,       ICON_FOOBNIX_SYMBOLIC,       ICON_FOOBNIX_ALT],
+            'play' : [ICON_FOOBNIX_PLAY,  ICON_FOOBNIX_PLAY_SYMBOLIC,  ICON_FOOBNIX_PLAY_ALT,  ICON_FOOBNIX_PLAY_ALT_SYMBOLIC ],
+            'pause': [ICON_FOOBNIX_PAUSE, ICON_FOOBNIX_PAUSE_SYMBOLIC, ICON_FOOBNIX_PAUSE_ALT, ICON_FOOBNIX_PAUSE_ALT_SYMBOLIC],
+            'stop' : [ICON_FOOBNIX_STOP,  ICON_FOOBNIX_STOP_SYMBOLIC,  ICON_FOOBNIX_STOP_ALT,  ICON_FOOBNIX_STOP_ALT_SYMBOLIC ],
+            'radio': [ICON_FOOBNIX_RADIO, ICON_FOOBNIX_RADIO_SYMBOLIC]
+        }
 
         self.static_icon_entry = ICON_FOOBNIX
 

@@ -5,12 +5,10 @@ Created on Sep 29, 2010
 
 @author: ivan
 '''
-from foobnix.helpers.window import ChildTopWindow
 
-import os
 import gi
 gi.require_version("WebKit", "3.0")
-
+import os
 import threading
 import time
 import urllib
@@ -18,16 +16,18 @@ import logging
 import urllib2
 import simplejson
 
-from gi.repository import Gtk
 from gi.repository import GLib
-from gi.repository import WebKit
+from gi.repository import Gtk
 from gi.repository import Soup
-
+from gi.repository import WebKit
 from HTMLParser import HTMLParser
 from urlparse import urlparse
+
 from foobnix.fc.fc import FC, FCBase
-from foobnix.gui.model import FModel
 from foobnix.fc.fc_helper import CONFIG_DIR
+from foobnix.gui.model import FModel
+from foobnix.helpers.window import ChildTopWindow
+from foobnix.util.encoding import any2utf, any2unicode
 from foobnix.util.time_utils import convert_seconds_to_text
 
 cookiefile = os.path.join(CONFIG_DIR, "vk_cooky")
@@ -142,6 +142,7 @@ class VKService:
     def get_result(self, method, data, attempt_count=0):
         logging.debug("get_result(%s, %s, %s)" % (method, data, attempt_count))
         result = self.get(method, data)
+        result = any2unicode(result)
         if not result:
             return
         logging.debug("result " + result)

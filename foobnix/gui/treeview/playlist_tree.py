@@ -260,9 +260,10 @@ class PlaylistTreeControl(CommonTreeControl):
                     self.tree_menu.add_item(_('Copy To...'), "list-add", copy_to, local_paths)
                     self.tree_menu.add_item(_("Open in file manager"), "system-file-manager", open_in_filemanager, local_paths[0])
                 if inet_paths:
-                    self.tree_menu.add_item(_('Download'), "download",
+                    download_icon = "download" if icon_exists("download") else "emblem-downloads"
+                    self.tree_menu.add_item(_('Download'), download_icon,
                                             self.controls.dm.append_tasks, self.get_all_selected_beans())
-                    self.tree_menu.add_item(_('Download To...'), "folder-downloads",
+                    self.tree_menu.add_item(_('Download To...'), "folder-download",
                                             self.controls.dm.append_tasks_with_dialog, self.get_all_selected_beans())
 
                 self.tree_menu.add_separator()

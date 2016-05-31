@@ -16,6 +16,7 @@ import threading
 import collections
 
 from foobnix.gui.model import FModel, FTreeModel, FDModel
+from foobnix.util.encoding import any2utf
 from foobnix.util.file_utils import get_file_extension, is_m3u
 from foobnix.util.id3_file import update_id3_wind_filtering
 from foobnix.util.iso_util import get_beans_from_iso_wv
@@ -289,7 +290,7 @@ class DragDropTree(Gtk.TreeView):
             self._plain_append(bean, parent_iter)
 
     def _plain_append(self, bean, parent_iter):
-        logging.debug("Plain append task: " + str(bean.text) + " " + str(bean.path))
+        logging.debug("Plain append task: " + any2utf(bean.text) + " " + any2utf(bean.path))
         if not bean:
             return
 
