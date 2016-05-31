@@ -9,10 +9,11 @@ def any2unicode(data, code=None):
         try:
             data = unicode(data, code)
         except:
-            logging.error("There is some problems while converting in unicode")
             if code is not 'utf-8':
-                logging.info("Try use utf-8")
+                logging.info("Can't differ coding correctly. Try use utf-8")
                 data = any2unicode(data, 'utf-8')
+            else:
+                logging.error("There is some problems while converting in unicode")
     return data
 
 def any2utf(data, code=None):

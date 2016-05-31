@@ -47,17 +47,15 @@ class TextArea(Gtk.ScrolledWindow):
 
     @idle_task
     def set_text(self, text="", bold_text=""):
-        if not text:
-            text = ""
-        if not bold_text:
-            bold_text = ""
-
+        text = any2unicode(text)
+        bold_text = any2unicode(bold_text)
         full_text = bold_text + "\n\n" + text + "\n"
+
         self.buffer.set_text(full_text)
         if text:
             self.clear_tags(full_text)
         start = self.buffer.get_iter_at_offset(0)
-        bold_text = any2unicode(bold_text, 'utf-8')
+
         end = self.buffer.get_iter_at_offset(len(bold_text))
         self.buffer.apply_tag(self.tag_bold, start, end)
 
