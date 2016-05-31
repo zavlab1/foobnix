@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 '''
 Created on Sep 29, 2010
@@ -7,18 +6,19 @@ Created on Sep 29, 2010
 '''
 
 import gi
-gi.require_version("WebKit", "3.0")
+import logging
 import os
+import simplejson
 import threading
 import time
 import urllib
-import logging
 import urllib2
-import simplejson
 
 from gi.repository import GLib
 from gi.repository import Gtk
+gi.require_version("Soup", "2.4")
 from gi.repository import Soup
+gi.require_version("WebKit", "3.0")
 from gi.repository import WebKit
 from HTMLParser import HTMLParser
 from urlparse import urlparse
@@ -27,11 +27,11 @@ from foobnix.fc.fc import FC, FCBase
 from foobnix.fc.fc_helper import CONFIG_DIR
 from foobnix.gui.model import FModel
 from foobnix.helpers.window import ChildTopWindow
-from foobnix.util.encoding import any2utf, any2unicode
+from foobnix.util.encoding import any2unicode
 from foobnix.util.time_utils import convert_seconds_to_text
 
-cookiefile = os.path.join(CONFIG_DIR, "vk_cooky")
 
+cookiefile = os.path.join(CONFIG_DIR, "vk_cooky")
 
 class VKWebkitAuth(Gtk.Dialog, ChildTopWindow):
 

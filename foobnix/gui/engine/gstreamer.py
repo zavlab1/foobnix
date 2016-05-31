@@ -5,25 +5,24 @@ Created on 28 сент. 2010
 @author: ivan
 '''
 
+import gi
 import os
 import time
 import thread
 import logging
 
-import gi
+from gi.repository import GObject
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst
-from gi.repository import GLib
-from gi.repository import GObject
-
 from foobnix.fc.fc import FC
+from foobnix.util.encoding import any2utf
 from foobnix.util.id3_util import correct_encoding
 from foobnix.gui.engine import MediaPlayerEngine
 from foobnix.util.plsparser import get_radio_source
 from foobnix.util.const import STATE_STOP, STATE_PLAY, STATE_PAUSE, FTYPE_RADIO
 
-Gst.init("")
 
+Gst.init("")
 
 class RecorderBin(Gst.Bin):
 
@@ -521,6 +520,7 @@ class GStreamerEngine(MediaPlayerEngine, GObject.GObject):
                     text = artist + " - " + text
                 if not text:
                     text = self.bean.path
+                text = any2utf(text)
                 if self._is_remote() and taglist.get_string("audio-codec")[0]:
                     text = text + " || " + taglist.get_string("audio-codec")[1]
                 if self._is_remote() and taglist.get_uint('bitrate')[0]:

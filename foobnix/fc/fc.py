@@ -43,7 +43,7 @@ class FC():
         self.is_view_info_panel = True
         self.is_view_search_panel = True
         self.is_view_music_tree_panel = True
-        self.is_view_coverlyrics_panel = False
+        self.is_view_coverlyrics_panel = True
         self.is_view_lyric_panel = True
         self.is_view_video_panel = False
         self.is_order_random = False
@@ -92,7 +92,7 @@ class FC():
         """main window controls"""
         self.main_window_size = [119, 154, 1024, 479]
         self.window_maximized = False
-        self.hpaned_left = -1
+        self.hpaned_left = 320
         self.hpaned_right = 800
         self.hpaned_right_right_side_width = 174 #self.main_window_size[3] - self.hpaned_right
         self.background_image_themes = ["theme/cat.jpg",
