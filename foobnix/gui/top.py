@@ -13,7 +13,7 @@ from foobnix.gui.menu import MenuBarWidget
 from foobnix.helpers.my_widgets import ImageButton
 from foobnix.helpers.menu import Popup
 from foobnix.fc.fc import FC
-from foobnix.util.image_util import icon_exists
+from foobnix.helpers.icons import icon_exists
 from foobnix.util.widget_utils import MenuStyleDecorator
 
 class TopWidgets(FControl, LoadSave, Gtk.Box):
@@ -25,7 +25,12 @@ class TopWidgets(FControl, LoadSave, Gtk.Box):
 
         self.pack_start(self.old_menu.widget, False, False, 0)
 
-        menu_icon = "open-menu" if icon_exists("open-menu") else "application-menu"
+        menu_icon = "open-menu"
+        if not icon_exists("open-menu"):
+            menu_icon = "open-menu-symbolic"
+        if not icon_exists("open-menu-symbolic"):
+            menu_icon = "application-menu"
+
         self.new_menu_button = ImageButton(menu_icon, tooltip_text=_("Menu"))
         self.new_menu_button.connect("button-press-event", self.on_button_press)
 

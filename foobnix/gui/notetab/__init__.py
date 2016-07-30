@@ -16,7 +16,7 @@ from foobnix.fc.fc import FC
 from foobnix.fc.fc_cache import FCache
 from foobnix.helpers.menu import Popup
 from foobnix.gui.state import LoadSave, Quitable
-from foobnix.util.image_util import icon_exists
+from foobnix.helpers.icons import icon_exists
 from foobnix.util.key_utils import is_key
 from foobnix.util.m3u_utils import m3u_writer
 from foobnix.gui.model.signal import FControl

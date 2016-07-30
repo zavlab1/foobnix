@@ -1,9 +1,6 @@
 #-*- coding: utf-8 -*-
 
 import logging
-import os
-import sys
-from gi.repository import Gtk
 
 from foobnix.dm.dm import DM
 from foobnix.eq.eq_controller import EqController
@@ -31,6 +28,7 @@ from foobnix.gui.perspectives.vk import VKPerspective
 from foobnix.gui.search import SearchControls
 from foobnix.gui.top import TopWidgets
 from foobnix.gui.window import MainWindow
+from foobnix.helpers.icons import init_icons
 from foobnix.preferences.preferences_window import PreferencesWindow
 from foobnix.service.lastfm_service import LastFmService
 from foobnix.util.localization import foobnix_localization
@@ -39,12 +37,13 @@ from foobnix.util.single_thread import SingleThread
 
 foobnix_localization()
 
+
 class FoobnixCore(BaseFoobnixControls):
     def __init__(self, with_dbus=True):
         BaseFoobnixControls.__init__(self)
         self.layout = None
 
-        self.init_icons()
+        init_icons()
 
         self.net_wrapper = NetWrapper(self, FC().net_ping)
 
@@ -112,24 +111,3 @@ class FoobnixCore(BaseFoobnixControls):
         self.on_load()
         if FC().hide_on_start:
             self.main_window.hide()
-
-    def init_icons(self):
-
-        def add_to_theme(path):
-            Gtk.IconTheme.get_default().append_search_path(path)
-            logging.info("Directory " + path + " added to GtkIconTheme search paths")
-
-        share_dir = os.path.join(sys.path[0], "share")
-
-        if os.path.exists(share_dir):
-            logging.info("Application run from source")
-
-            app_icon_dir = os.path.join(sys.path[0], share_dir, "foobnix", "images")
-            sys_icon_dir = os.path.join(sys.path[0], share_dir, "icons")
-            add_to_theme(app_icon_dir)
-            add_to_theme(sys_icon_dir)
-        else:
-            logging.info("Installed application is run")
-
-            app_dir = os.path.abspath(os.path.join(os.sep, "usr", "share", "foobnix", "images"))
-            add_to_theme(app_dir)

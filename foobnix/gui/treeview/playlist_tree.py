@@ -26,7 +26,7 @@ from foobnix.util.converter import convert_files
 from foobnix.util.file_utils import open_in_filemanager, copy_to, get_files_from_gtk_selection_data,\
     get_file_extension, is_playlist
 from foobnix.util.id3_util import update_id3
-from foobnix.util.image_util import icon_exists
+from foobnix.helpers.icons import icon_exists
 from foobnix.util.key_utils import KEY_RETURN, is_key, KEY_DELETE, \
     is_modificator
 from foobnix.util.localization import foobnix_localization

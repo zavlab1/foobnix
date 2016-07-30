@@ -11,7 +11,7 @@ Type=Application
 Icon=foobnix
 X-GNOME-DocPath=foobnix/foobnix.xml
 Categories=GNOME;GTK;AudioVideo;Player;
-MimeType=application/x-ogg;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;audio/x-flac;x-content/audio;
+MimeType=application/x-ogg;application/ogg;audio/ogg;audio/x-ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/x-mpegurl;audio/flac;audio/x-flac;x-content/audio;
 StartupNotify=true
 X-Ubuntu-Gettext-Domain=foobnix
 

@@ -13,7 +13,7 @@ from foobnix.gui.model.signal import FControl
 from foobnix.gui.about.about import AboutWindow
 from foobnix.helpers.my_widgets import open_link_in_browser
 from foobnix.util import const
-from foobnix.util.image_util import icon_exists
+from foobnix.helpers.icons import icon_exists
 from foobnix.util.widget_utils import MenuStyleDecorator
 
 
@@ -33,7 +33,7 @@ class MenuBarWidget(FControl):
         file.add_image_item(_("Add File(s)"),      "folder-open",      self.controls.on_add_files)
         file.add_image_item(_("Add Folder(s)"),    "folder-open",      self.controls.on_add_folders)
         file.add_image_item(_("Save Playlist As"), "document-save-as", lambda: self.controls.notetabs.on_save_playlist(
-                                                                       self.controls.notetabs.get_current_tree().scroll))
+            self.controls.notetabs.get_current_tree().scroll))
         file.separator()
         file.add_image_item(_("Quit"),             "application-exit", self.controls.quit)
 
@@ -49,18 +49,17 @@ class MenuBarWidget(FControl):
         self.view_cover_lyrics = view.add_check_item(_("Cover & Lyrics Panel"), FC().is_view_coverlyrics_panel)
         self.view_cover_lyrics.connect("activate", lambda w: controls.layout.set_visible_coverlyrics_panel(w.get_active()))
 
-        separator1 = view.separator() #@UnusedVariable
         equalizer_icon = "view-media-equalizer" if icon_exists("view-media-equalizer") else "format-justify-right"
         view.add_image_item(_("Equalizer"),        equalizer_icon, self.controls.eq.show)
         view.add_image_item(_("Download Manager"), "go-down",      self.controls.dm.show)
-        separator2 = view.separator()
+        separator = view.separator()
 
         pref_icon = "gtk-preferences" if icon_exists("gtk-preferences") else "preferences-system"
         preferences_item = view.add_image_item(_("Preferences"), pref_icon, self.controls.show_preferences)
 
         """if new style menu - remove preferences from View"""
         if not isinstance(parent, TopMenuBar):
-            separator2.hide()
+            separator.hide()
             preferences_item.hide()
 
         """Playback"""

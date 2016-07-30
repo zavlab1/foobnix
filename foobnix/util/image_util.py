@@ -4,9 +4,8 @@ Created on 11 сент. 2010
 
 @author: ivan
 '''
-import os
 
-from gi.repository import Gtk
+import os
 
 from foobnix.util.file_utils import get_file_extension
 
@@ -46,6 +45,3 @@ def get_image_by_path(path):
                 return image
 
 
-def icon_exists(icon_name):
-    theme = Gtk.IconTheme.get_default()
-    return theme.has_icon(icon_name)
