@@ -16,7 +16,7 @@ class LastFMPerspective(BasePerspective):
         return "lastfm"
 
     def get_icon(self):
-        return "network-server"
+        return "lastfm"
 
     def get_name(self):
         return _("Last.FM")

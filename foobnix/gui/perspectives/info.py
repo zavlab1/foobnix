@@ -23,7 +23,7 @@ class InfoPerspective(BasePerspective, Quitable):
         return "info"
 
     def get_icon(self):
-        return "dialog-information"
+        return "info"
 
     def get_name(self):
         return _("Info")

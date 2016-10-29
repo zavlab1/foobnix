@@ -23,7 +23,7 @@ class VKPerspective(BasePerspective, Filterable):
         return "vk"
 
     def get_icon(self):
-        return "format-indent-less"
+        return "vk"
 
     def get_name(self):
         return _("VK")

@@ -39,7 +39,7 @@ class FSPerspective(BasePerspective, Filterable):
         return "fs"
 
     def get_icon(self):
-        return "drive-harddisk"
+        return "music"
 
     def get_name(self):
         return _("Music")
